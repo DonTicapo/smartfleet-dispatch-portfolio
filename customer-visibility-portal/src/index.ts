@@ -1,4 +1,6 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
+import rateLimit from '@fastify/rate-limit';
 import fastifyWebsocket from '@fastify/websocket';
 import jwt from 'jsonwebtoken';
 import { getConfig } from './config.js';
@@ -45,6 +47,16 @@ export async function buildApp() {
     logger: {
       level: config.LOG_LEVEL,
     },
+  });
+
+  // Production hardening
+  await app.register(cors, {
+    origin: true,
+    credentials: true,
+  });
+  await app.register(rateLimit, {
+    max: 100,
+    timeWindow: '1 minute',
   });
 
   // Plugins
