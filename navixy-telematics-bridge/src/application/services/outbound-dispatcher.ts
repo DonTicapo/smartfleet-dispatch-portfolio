@@ -26,7 +26,7 @@ export class OutboundDispatcher {
     if (this.intervalId) {
       clearInterval(this.intervalId);
       this.intervalId = null;
-      this.logger.info('Outbound dispatcher stopped');
+      this.logger.info({}, 'Outbound dispatcher stopped');
     }
   }
 

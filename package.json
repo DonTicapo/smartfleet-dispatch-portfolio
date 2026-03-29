@@ -1,0 +1,27 @@
+{
+  "name": "smartfleet-dispatch-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Full-stack ready-mix concrete dispatch platform — 6 bounded-context microservices",
+  "scripts": {
+    "install:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Installing $dir...\" && (cd $dir && npm install); done",
+    "build:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Building $dir...\" && (cd $dir && npm run build); done",
+    "test:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"\\n--- $dir ---\" && (cd $dir && npm test); done",
+    "lint:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Linting $dir...\" && (cd $dir && npm run lint); done",
+    "typecheck:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Typechecking $dir...\" && (cd $dir && npx tsc --noEmit); done",
+    "migrate:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Migrating $dir...\" && (cd $dir && npm run migrate); done",
+    "seed:all": "for dir in order-ticket-load-core navixy-telematics-bridge dispatch-control-tower customer-visibility-portal analytics-integration-hub plant-edge-ot-bridge; do echo \"Seeding $dir...\" && (cd $dir && npm run seed); done",
+    "dev:otl": "cd order-ticket-load-core && npm run dev",
+    "dev:ntb": "cd navixy-telematics-bridge && npm run dev",
+    "dev:dct": "cd dispatch-control-tower && npm run dev",
+    "dev:cvp": "cd customer-visibility-portal && npm run dev",
+    "dev:aih": "cd analytics-integration-hub && npm run dev",
+    "dev:peob": "cd plant-edge-ot-bridge && npm run dev",
+    "dev:cvp-ui": "cd customer-visibility-portal/frontend && npm run dev",
+    "dev:dct-ui": "cd dispatch-control-tower/frontend && npm run dev",
+    "demo": "./scripts/demo.sh",
+    "docker:up": "docker compose up -d",
+    "docker:down": "docker compose down",
+    "docker:logs": "docker compose logs -f"
+  }
+}
