@@ -1,0 +1,27 @@
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 5174,
+    proxy: {
+      '/trucks': {
+        target: 'http://localhost:3002',
+        changeOrigin: true,
+      },
+      '/drivers': {
+        target: 'http://localhost:3002',
+        changeOrigin: true,
+      },
+      '/dispatch': {
+        target: 'http://localhost:3002',
+        changeOrigin: true,
+      },
+      '/health': {
+        target: 'http://localhost:3002',
+        changeOrigin: true,
+      },
+    },
+  },
+});
