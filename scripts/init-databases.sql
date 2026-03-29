@@ -1,0 +1,23 @@
+-- Create users
+CREATE USER otl WITH PASSWORD 'otl_dev';
+CREATE USER ntb WITH PASSWORD 'ntb_dev';
+CREATE USER dct WITH PASSWORD 'dct_dev';
+CREATE USER cvp WITH PASSWORD 'cvp_dev';
+CREATE USER aih WITH PASSWORD 'aih_dev';
+CREATE USER peob WITH PASSWORD 'peob_dev';
+
+-- Create databases
+CREATE DATABASE otl_core OWNER otl;
+CREATE DATABASE ntb_bridge OWNER ntb;
+CREATE DATABASE dct_tower OWNER dct;
+CREATE DATABASE cvp_portal OWNER cvp;
+CREATE DATABASE aih_hub OWNER aih;
+CREATE DATABASE peob_bridge OWNER peob;
+
+-- Grant privileges
+GRANT ALL PRIVILEGES ON DATABASE otl_core TO otl;
+GRANT ALL PRIVILEGES ON DATABASE ntb_bridge TO ntb;
+GRANT ALL PRIVILEGES ON DATABASE dct_tower TO dct;
+GRANT ALL PRIVILEGES ON DATABASE cvp_portal TO cvp;
+GRANT ALL PRIVILEGES ON DATABASE aih_hub TO aih;
+GRANT ALL PRIVILEGES ON DATABASE peob_bridge TO peob;

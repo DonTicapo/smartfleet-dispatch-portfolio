@@ -1,0 +1,7 @@
+export enum TicketStatus {
+  CREATED = 'CREATED',
+  DISPATCHED = 'DISPATCHED',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+  VOIDED = 'VOIDED',
+}

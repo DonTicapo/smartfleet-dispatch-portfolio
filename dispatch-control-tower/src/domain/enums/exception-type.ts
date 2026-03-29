@@ -1,0 +1,8 @@
+export enum ExceptionType {
+  DELAY = 'DELAY',
+  NO_SHOW = 'NO_SHOW',
+  PLANT_ISSUE = 'PLANT_ISSUE',
+  ASSET_FAILURE = 'ASSET_FAILURE',
+  DRIVER_ISSUE = 'DRIVER_ISSUE',
+  OTHER = 'OTHER',
+}

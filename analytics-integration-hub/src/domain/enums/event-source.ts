@@ -1,0 +1,6 @@
+export enum EventSource {
+  OTL_CORE = 'OTL_CORE',
+  NAVIXY_BRIDGE = 'NAVIXY_BRIDGE',
+  DISPATCH_TOWER = 'DISPATCH_TOWER',
+  PLANT_EDGE = 'PLANT_EDGE',
+}

@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5436:5432'
+    environment:
+      POSTGRES_USER: aih
+      POSTGRES_PASSWORD: aih_dev
+      POSTGRES_DB: aih_hub
+    volumes:
+      - aih_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U aih -d aih_hub']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  aih_pgdata:

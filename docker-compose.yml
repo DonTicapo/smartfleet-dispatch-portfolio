@@ -1,0 +1,91 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init-databases.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  order-ticket-load-core:
+    build: ./order-ticket-load-core
+    ports:
+      - '3000:3000'
+    environment:
+      DATABASE_URL: postgresql://otl:otl_dev@postgres:5432/otl_core
+      NODE_ENV: production
+      PORT: '3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  navixy-telematics-bridge:
+    build: ./navixy-telematics-bridge
+    ports:
+      - '3001:3001'
+    environment:
+      DATABASE_URL: postgresql://ntb:ntb_dev@postgres:5432/ntb_bridge
+      NODE_ENV: production
+      PORT: '3001'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  dispatch-control-tower:
+    build: ./dispatch-control-tower
+    ports:
+      - '3002:3002'
+    environment:
+      DATABASE_URL: postgresql://dct:dct_dev@postgres:5432/dct_tower
+      NODE_ENV: production
+      PORT: '3002'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  customer-visibility-portal:
+    build: ./customer-visibility-portal
+    ports:
+      - '3003:3003'
+    environment:
+      DATABASE_URL: postgresql://cvp:cvp_dev@postgres:5432/cvp_portal
+      NODE_ENV: production
+      PORT: '3003'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  analytics-integration-hub:
+    build: ./analytics-integration-hub
+    ports:
+      - '3004:3004'
+    environment:
+      DATABASE_URL: postgresql://aih:aih_dev@postgres:5432/aih_hub
+      NODE_ENV: production
+      PORT: '3004'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  plant-edge-ot-bridge:
+    build: ./plant-edge-ot-bridge
+    ports:
+      - '3005:3005'
+    environment:
+      DATABASE_URL: postgresql://peob:peob_dev@postgres:5432/peob_bridge
+      NODE_ENV: production
+      PORT: '3005'
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5434:5432'
+    environment:
+      POSTGRES_USER: dct
+      POSTGRES_PASSWORD: dct_dev
+      POSTGRES_DB: dct_tower
+    volumes:
+      - dct_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U dct -d dct_tower']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  dct_pgdata:

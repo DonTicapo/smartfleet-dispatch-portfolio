@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5435:5432'
+    environment:
+      POSTGRES_USER: cvp
+      POSTGRES_PASSWORD: cvp_dev
+      POSTGRES_DB: cvp_portal
+    volumes:
+      - cvp_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U cvp -d cvp_portal']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  cvp_pgdata:

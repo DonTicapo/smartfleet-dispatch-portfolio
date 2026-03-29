@@ -1,0 +1,6 @@
+export enum DriverStatus {
+  AVAILABLE = 'AVAILABLE',
+  ASSIGNED = 'ASSIGNED',
+  OFF_DUTY = 'OFF_DUTY',
+  SUSPENDED = 'SUSPENDED',
+}

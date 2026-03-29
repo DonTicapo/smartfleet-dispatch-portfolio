@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    ports:
+      - '5433:5432'
+    environment:
+      POSTGRES_USER: ntb
+      POSTGRES_PASSWORD: ntb_dev
+      POSTGRES_DB: ntb_bridge
+    volumes:
+      - ntb_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ntb -d ntb_bridge']
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  ntb_pgdata:

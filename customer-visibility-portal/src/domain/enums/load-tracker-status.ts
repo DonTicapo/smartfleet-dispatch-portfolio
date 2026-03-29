@@ -1,0 +1,10 @@
+export enum LoadTrackerStatus {
+  SCHEDULED = 'SCHEDULED',
+  LOADING = 'LOADING',
+  LOADED = 'LOADED',
+  EN_ROUTE = 'EN_ROUTE',
+  ON_SITE = 'ON_SITE',
+  POURING = 'POURING',
+  RETURNING = 'RETURNING',
+  COMPLETED = 'COMPLETED',
+}
