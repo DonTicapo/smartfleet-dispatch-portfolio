@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import fastifyWebsocket from '@fastify/websocket';
 import jwt from 'jsonwebtoken';
 import { getConfig } from './config.js';
 import { getDb, closeDb } from './infrastructure/database/connection.js';
@@ -34,6 +35,7 @@ import { registerTicketRoutes } from './interfaces/http/routes/ticket-routes.js'
 import { registerLoadRoutes } from './interfaces/http/routes/load-routes.js';
 import { registerMessageRoutes } from './interfaces/http/routes/message-routes.js';
 import { registerSyncRoutes } from './interfaces/http/routes/sync-routes.js';
+import { registerLoadTrackingWs } from './interfaces/ws/load-tracking-ws.js';
 
 export async function buildApp() {
   const config = getConfig();
@@ -44,6 +46,9 @@ export async function buildApp() {
       level: config.LOG_LEVEL,
     },
   });
+
+  // Plugins
+  await app.register(fastifyWebsocket);
 
   // Middleware
   registerRequestId(app);
@@ -102,6 +107,9 @@ export async function buildApp() {
   registerLoadRoutes(app, loadTrackerService);
   registerMessageRoutes(app, messageService);
   registerSyncRoutes(app, syncService);
+
+  // WebSocket
+  registerLoadTrackingWs(app, loadTrackerService);
 
   return app;
 }
