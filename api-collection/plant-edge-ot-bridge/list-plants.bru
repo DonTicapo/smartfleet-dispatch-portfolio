@@ -1,0 +1,15 @@
+meta {
+  name: List Plants
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{peobUrl}}/edge/plants
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

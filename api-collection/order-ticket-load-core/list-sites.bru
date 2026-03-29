@@ -1,0 +1,15 @@
+meta {
+  name: List Sites
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{otlUrl}}/sites?customerId=11111111-1111-1111-1111-111111111001
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,24 @@
+meta {
+  name: Create Assignment
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{dctUrl}}/dispatch/assignments
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "loadId": "11111111-1111-1111-1111-111111117005",
+    "truckId": "33333333-3333-3333-3333-333333331001",
+    "driverId": "33333333-3333-3333-3333-333333332001",
+    "notes": "Assign Carlos/TRK-101 for next load on TKT-2026-0002"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: List KPI Definitions
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{aihUrl}}/kpis/definitions
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

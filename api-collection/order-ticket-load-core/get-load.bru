@@ -1,0 +1,15 @@
+meta {
+  name: Get Load
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{otlUrl}}/loads/11111111-1111-1111-1111-111111117001
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

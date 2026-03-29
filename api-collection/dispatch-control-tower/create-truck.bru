@@ -1,0 +1,27 @@
+meta {
+  name: Create Truck
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{dctUrl}}/trucks
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "number": "TRK-105",
+    "externalId": "TRK-105",
+    "licensePlate": "TX-CMX-105",
+    "capacityAmount": 10.0,
+    "capacityUnit": "CY",
+    "homePlantId": "PLT-RIVER",
+    "notes": "New Kenworth T880 — added to Riverside fleet"
+  }
+}

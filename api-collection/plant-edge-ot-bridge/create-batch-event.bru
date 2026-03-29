@@ -1,0 +1,32 @@
+meta {
+  name: Create Batch Event
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{peobUrl}}/edge/batch-events
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "eventId": "batch-evt-006",
+    "plantId": "66666666-6666-6666-6666-666666661001",
+    "mixerId": "66666666-6666-6666-6666-666666662001",
+    "ticketNumber": "TKT-2026-0002",
+    "batchNumber": "BATCH-2026-0328-003",
+    "eventType": "BATCH_STARTED",
+    "payload": {
+      "mix_design": "MX-4000",
+      "target_cy": 10.0,
+      "truck_id": "TRK-101"
+    },
+    "occurredAt": "2026-03-28T08:30:00Z"
+  }
+}

@@ -1,0 +1,29 @@
+meta {
+  name: Post Scale Reading
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{peobUrl}}/edge/scale-readings
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "plantId": "66666666-6666-6666-6666-666666661001",
+    "mixerId": "66666666-6666-6666-6666-666666662001",
+    "batchNumber": "BATCH-2026-0328-003",
+    "materialType": "CEMENT",
+    "targetWeight": 5640.00,
+    "actualWeight": 5638.00,
+    "unit": "LB",
+    "tolerance": 1.00,
+    "recordedAt": "2026-03-28T08:30:30Z"
+  }
+}

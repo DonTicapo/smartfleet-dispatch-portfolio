@@ -1,0 +1,15 @@
+meta {
+  name: Get Order
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{otlUrl}}/orders/11111111-1111-1111-1111-111111115001
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

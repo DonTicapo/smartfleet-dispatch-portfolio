@@ -1,0 +1,15 @@
+meta {
+  name: List Geofence Zones
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{ntbUrl}}/geofence-zones
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

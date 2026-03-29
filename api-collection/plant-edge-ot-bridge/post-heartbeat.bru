@@ -1,0 +1,27 @@
+meta {
+  name: Post Heartbeat
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{peobUrl}}/edge/heartbeat
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "plantId": "66666666-6666-6666-6666-666666661001",
+    "uptimeSeconds": 346200,
+    "cpuPercent": 18.40,
+    "memoryPercent": 39.80,
+    "diskPercent": 55.90,
+    "pendingOutbound": 0,
+    "lastCloudSyncAt": "2026-03-28T08:29:55Z"
+  }
+}

@@ -1,0 +1,15 @@
+meta {
+  name: List Trucks
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{dctUrl}}/trucks
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

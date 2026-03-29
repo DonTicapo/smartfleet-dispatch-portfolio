@@ -1,0 +1,15 @@
+meta {
+  name: Get Load ETA
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{cvpUrl}}/portal/loads/11111111-1111-1111-1111-111111117003/eta
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: List Messages
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{cvpUrl}}/portal/messages
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,27 @@
+meta {
+  name: Create Driver
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{dctUrl}}/drivers
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
+
+body:json {
+  {
+    "firstName": "Angela",
+    "lastName": "Torres",
+    "externalId": "DRV-005",
+    "phone": "555-301-1005",
+    "licenseNumber": "CDL-TX-44205",
+    "defaultTruckId": "33333333-3333-3333-3333-333333331004",
+    "notes": "2 years experience, downtown plant backup"
+  }
+}

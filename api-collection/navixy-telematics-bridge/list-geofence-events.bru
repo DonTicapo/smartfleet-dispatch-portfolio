@@ -1,0 +1,15 @@
+meta {
+  name: List Geofence Events
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{ntbUrl}}/geofence-events
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

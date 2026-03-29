@@ -1,0 +1,15 @@
+meta {
+  name: List Webhooks
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{aihUrl}}/integrations/webhooks
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get Dispatch Board
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{dctUrl}}/dispatch/board?date=2026-03-29
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}

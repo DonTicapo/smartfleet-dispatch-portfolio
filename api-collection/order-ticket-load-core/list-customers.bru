@@ -1,0 +1,15 @@
+meta {
+  name: List Customers
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{otlUrl}}/customers
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: {{token}}
+}
