@@ -4,6 +4,58 @@ Full-stack ready-mix concrete dispatch platform — 6 bounded-context microservi
 
 ## Architecture
 
+```mermaid
+graph TB
+    subgraph External
+        NAV[Navixy GPS API]
+        PLC[PLC / SCADA]
+        ERP[ERP Systems]
+        CUS[Customer Browser]
+    end
+
+    subgraph SmartFleet Platform
+        OTL[Order Ticket Load Core<br/>:3000<br/><i>Canonical Domain</i>]
+        NTB[Navixy Telematics Bridge<br/>:3001<br/><i>GPS + Geofence</i>]
+        DCT[Dispatch Control Tower<br/>:3002<br/><i>Assignment + Exceptions</i>]
+        CVP[Customer Visibility Portal<br/>:3003<br/><i>Status + ETA</i>]
+        AIH[Analytics Integration Hub<br/>:3004<br/><i>KPIs + Events</i>]
+        PEOB[Plant Edge OT Bridge<br/>:3005<br/><i>Batch + Mixer</i>]
+    end
+
+    subgraph Data
+        PG[(PostgreSQL 16<br/>6 databases)]
+    end
+
+    NAV -->|tracker sync| NTB
+    PLC -->|telemetry| PEOB
+    CUS -->|portal| CVP
+    ERP <-->|export| AIH
+
+    NTB -->|geofence events| OTL
+    DCT -->|assignments| OTL
+    DCT -->|positions| NTB
+    CVP -->|order/ticket data| OTL
+    CVP -->|load positions| NTB
+    AIH -->|canonical events| OTL
+    AIH -->|telemetry events| NTB
+    AIH -->|batch events| PEOB
+    PEOB -->|batch→ticket link| OTL
+
+    OTL --- PG
+    NTB --- PG
+    DCT --- PG
+    CVP --- PG
+    AIH --- PG
+    PEOB --- PG
+
+    style OTL fill:#4a90d9,color:#fff
+    style NTB fill:#50b86c,color:#fff
+    style DCT fill:#e6a23c,color:#fff
+    style CVP fill:#9b59b6,color:#fff
+    style AIH fill:#e74c3c,color:#fff
+    style PEOB fill:#1abc9c,color:#fff
+```
+
 | Service | Port | Description |
 |---------|------|-------------|
 | [order-ticket-load-core](./order-ticket-load-core) | 3000 | Canonical domain: customers, jobs, orders, tickets, loads, delivery events |
