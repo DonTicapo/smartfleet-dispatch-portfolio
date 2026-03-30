@@ -1,0 +1,46 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'order-ticket-load-core'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3000']
+        labels:
+          service: otl-core
+
+  - job_name: 'navixy-telematics-bridge'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3001']
+        labels:
+          service: ntb
+
+  - job_name: 'dispatch-control-tower'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3002']
+        labels:
+          service: dct
+
+  - job_name: 'customer-visibility-portal'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3003']
+        labels:
+          service: cvp
+
+  - job_name: 'analytics-integration-hub'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3004']
+        labels:
+          service: aih
+
+  - job_name: 'plant-edge-ot-bridge'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['host.docker.internal:3005']
+        labels:
+          service: peob
