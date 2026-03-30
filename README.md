@@ -1,6 +1,17 @@
 # SmartFleet Dispatch Portfolio
 
+[![CI](https://github.com/DonTicapo/smartfleet-dispatch-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/DonTicapo/smartfleet-dispatch-portfolio/actions/workflows/ci.yml)
+[![Landing Page](https://github.com/DonTicapo/smartfleet-dispatch-portfolio/actions/workflows/pages.yml/badge.svg)](https://donticapo.github.io/smartfleet-dispatch-portfolio/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-22+-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Fastify](https://img.shields.io/badge/Fastify-5-000000?logo=fastify&logoColor=white)](https://fastify.dev/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
+
 Full-stack ready-mix concrete dispatch platform — 6 bounded-context microservices demonstrating domain-driven design, event-driven architecture, and operational technology integration.
+
+> **[View Live Landing Page](https://donticapo.github.io/smartfleet-dispatch-portfolio/)** | **[Browse API Collection](./api-collection/)**
 
 ## Architecture
 
