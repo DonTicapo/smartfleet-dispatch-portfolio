@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SmartFleet API Reference</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+    .header { padding: 3rem 2rem 2rem; text-align: center; border-bottom: 1px solid #1e293b; }
+    .header h1 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .header h1 span { background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .header p { color: #94a3b8; font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; padding: 2rem; max-width: 1200px; margin: 0 auto; }
+    .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; transition: transform 0.2s, border-color 0.2s; }
+    .card:hover { transform: translateY(-2px); border-color: #475569; }
+    .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+    .card-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .card-title { font-size: 1.1rem; font-weight: 600; }
+    .card-port { color: #64748b; font-size: 0.85rem; font-family: monospace; }
+    .card-desc { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.25rem; }
+    .endpoints { list-style: none; margin-bottom: 1.25rem; }
+    .endpoints li { font-family: monospace; font-size: 0.8rem; color: #64748b; padding: 0.25rem 0; display: flex; gap: 0.5rem; }
+    .method { font-weight: 700; min-width: 3rem; }
+    .method.get { color: #22c55e; }
+    .method.post { color: #3b82f6; }
+    .method.patch { color: #f59e0b; }
+    .method.delete { color: #ef4444; }
+    .endpoint-path { color: #cbd5e1; }
+    .card-link { display: inline-block; background: #334155; color: #e2e8f0; text-decoration: none; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; transition: background 0.2s; }
+    .card-link:hover { background: #475569; }
+    .footer { text-align: center; padding: 2rem; color: #475569; font-size: 0.85rem; border-top: 1px solid #1e293b; }
+    .footer a { color: #3b82f6; text-decoration: none; }
+    .badge { display: inline-block; background: #334155; color: #94a3b8; font-size: 0.7rem; padding: 0.15rem 0.5rem; border-radius: 999px; margin-left: 0.5rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Smart<span>Fleet</span> API Reference</h1>
+    <p>Interactive Swagger documentation for all 6 microservices. Start each service locally, then click through to explore.</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#3b82f6"></div>
+        <div>
+          <div class="card-title">Order Ticket Load Core</div>
+          <div class="card-port">:3000</div>
+        </div>
+        <span class="badge">canonical</span>
+      </div>
+      <div class="card-desc">Customers, jobs, sites, orders, tickets, loads, delivery events, and mix designs.</div>
+      <ul class="endpoints">
+        <li><span class="method get">GET</span><span class="endpoint-path">/customers</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/orders</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/tickets/:id</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/loads/:id</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/delivery-events</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3000/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#22c55e"></div>
+        <div>
+          <div class="card-title">Navixy Telematics Bridge</div>
+          <div class="card-port">:3001</div>
+        </div>
+        <span class="badge">integration</span>
+      </div>
+      <div class="card-desc">GPS tracker sync, trip/route retrieval, geofence inference, and store-and-forward events.</div>
+      <ul class="endpoints">
+        <li><span class="method get">GET</span><span class="endpoint-path">/assets</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/trips</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/geofence-zones</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/geofence-events</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3001/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#f59e0b"></div>
+        <div>
+          <div class="card-title">Dispatch Control Tower</div>
+          <div class="card-port">:3002</div>
+        </div>
+        <span class="badge">operations</span>
+      </div>
+      <div class="card-desc">Truck/driver fleet management, assignment lifecycle, exception handling, dispatch board.</div>
+      <ul class="endpoints">
+        <li><span class="method get">GET</span><span class="endpoint-path">/trucks</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/dispatch/assignments</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/dispatch/board</span></li>
+        <li><span class="method patch">PATCH</span><span class="endpoint-path">/dispatch/exceptions/:id</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3002/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#8b5cf6"></div>
+        <div>
+          <div class="card-title">Customer Visibility Portal</div>
+          <div class="card-port">:3003</div>
+        </div>
+        <span class="badge">customer</span>
+      </div>
+      <div class="card-desc">Customer auth, order/ticket status, real-time WebSocket load tracking, delivery messages.</div>
+      <ul class="endpoints">
+        <li><span class="method post">POST</span><span class="endpoint-path">/portal/auth/login</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/portal/orders</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/portal/loads/:id/eta</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/portal/messages</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3003/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#ef4444"></div>
+        <div>
+          <div class="card-title">Analytics Integration Hub</div>
+          <div class="card-port">:3004</div>
+        </div>
+        <span class="badge">analytics</span>
+      </div>
+      <div class="card-desc">Idempotent event ingestion, KPI computation, ERP export, HMAC webhook delivery.</div>
+      <ul class="endpoints">
+        <li><span class="method post">POST</span><span class="endpoint-path">/events</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/kpis/snapshots</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/integrations/erp/export</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/integrations/webhooks</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3004/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot" style="background:#14b8a6"></div>
+        <div>
+          <div class="card-title">Plant Edge OT Bridge</div>
+          <div class="card-port">:3005</div>
+        </div>
+        <span class="badge">edge / OT</span>
+      </div>
+      <div class="card-desc">Batch lifecycle events, scale readings, mixer state machine, offline store-and-forward.</div>
+      <ul class="endpoints">
+        <li><span class="method post">POST</span><span class="endpoint-path">/edge/batch-events</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/edge/scale-readings</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/edge/mixer-status</span></li>
+        <li><span class="method get">GET</span><span class="endpoint-path">/edge/config</span></li>
+        <li><span class="method post">POST</span><span class="endpoint-path">/edge/heartbeat</span></li>
+      </ul>
+      <a class="card-link" href="http://localhost:3005/docs" target="_blank">Open Swagger UI &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>SmartFleet Dispatch Portfolio &mdash; <a href="https://github.com/DonTicapo/smartfleet-dispatch-portfolio">GitHub</a></p>
+  </div>
+</body>
+</html>
