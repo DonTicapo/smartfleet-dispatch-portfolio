@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { scryptSync, randomBytes, timingSafeEqual, createHmac } from 'crypto';
+import { scryptSync, randomBytes, timingSafeEqual } from 'crypto';
 import { PortalUserRole } from '../../../src/domain/enums/portal-user-role.js';
 
 /**

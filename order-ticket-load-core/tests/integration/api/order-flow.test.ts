@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import type { Knex } from 'knex';
-import { setupTestDb, teardownTestDb, getTestDb } from '../../helpers/test-db.js';
+import { setupTestDb, teardownTestDb } from '../../helpers/test-db.js';
 import { makeCustomer, makeMixDesign, makeSite, makeJob } from '../../helpers/fixtures.js';
 
 let db: Knex;

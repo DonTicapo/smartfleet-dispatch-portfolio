@@ -71,7 +71,8 @@ export async function buildApp() {
   const customerRepo = new CustomerRepository(db);
   const siteRepo = new SiteRepository(db);
   const jobRepo = new JobRepository(db);
-  const _mixDesignRepo = new MixDesignRepository(db);
+  // MixDesignRepository instantiated for future use in mix-design routes
+  new MixDesignRepository(db);
   const orderRepo = new OrderRepository(db);
   const ticketRepo = new TicketRepository(db);
   const loadRepo = new LoadRepository(db);

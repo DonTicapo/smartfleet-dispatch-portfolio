@@ -18,7 +18,7 @@ export class DispatchBoardService {
     // In full implementation, this calls OTL core to get tickets/loads for the date
     // and upserts them into the board table enriched with local truck/driver data.
     // For now, return 0 until OTL core exposes the query endpoint.
-    const _tickets = await this.otlCoreClient.listTicketsByDate(date);
+    await this.otlCoreClient.listTicketsByDate(date);
     // TODO: Map tickets -> board entries with local truck/driver enrichment
     return { refreshed: 0 };
   }
