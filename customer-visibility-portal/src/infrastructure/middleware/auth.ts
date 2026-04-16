@@ -11,11 +11,7 @@ declare module 'fastify' {
 const PUBLIC_PATHS = ['/health', '/portal/auth/login'];
 
 export function registerAuth(app: FastifyInstance): void {
-  app.decorateRequest('principal', {
-    sub: '',
-    role: '',
-    customerId: '',
-  } as { sub: string; role: string; customerId: string });
+  app.decorateRequest('principal', null as unknown as { sub: string; role: string; customerId: string });
 
   app.addHook('onRequest', async (request, reply) => {
     // Public endpoints do not require auth

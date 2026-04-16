@@ -9,7 +9,7 @@ declare module 'fastify' {
 }
 
 export function registerAuth(app: FastifyInstance): void {
-  app.decorateRequest('principal', { sub: '', role: '' } as { sub: string; role: string });
+  app.decorateRequest('principal', null as unknown as { sub: string; role: string });
 
   app.addHook('onRequest', async (request, reply) => {
     // Health endpoint is public
@@ -24,6 +24,13 @@ export function registerAuth(app: FastifyInstance): void {
     try {
       const token = authHeader.slice(7);
       const config = getConfig();
+
+      // Service-to-service token bypass
+      if (token === config.SERVICE_TOKEN) {
+        request.principal = { sub: 'service:sap-sync', role: 'service' };
+        return;
+      }
+
       const decoded = jwt.verify(token, config.JWT_SECRET) as { sub: string; role: string };
       request.principal = { sub: decoded.sub, role: decoded.role };
     } catch {

@@ -3,7 +3,7 @@ import { z } from 'zod';
 export const ImportCustomerBody = z.object({
   externalId: z.string().min(1),
   name: z.string().min(1),
-  contactEmail: z.string().email().nullish(),
+  contactEmail: z.string().nullish(),
   contactPhone: z.string().nullish(),
   billingAddress: z
     .object({

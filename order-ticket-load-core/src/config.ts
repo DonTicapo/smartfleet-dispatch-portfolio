@@ -6,6 +6,7 @@ const envSchema = z.object({
   JWT_SECRET: z.string().min(1).default('change-me-in-production'),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace']).default('info'),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
+  SERVICE_TOKEN: z.string().min(1).default('sap-sync-service'),
 });
 
 export type Config = z.infer<typeof envSchema>;

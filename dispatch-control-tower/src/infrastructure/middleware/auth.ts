@@ -7,7 +7,7 @@ declare module 'fastify' {
 }
 
 export function registerAuth(app: FastifyInstance): void {
-  app.decorateRequest('principal', { sub: '', role: '' } as { sub: string; role: string });
+  app.decorateRequest('principal', null as unknown as { sub: string; role: string });
   app.addHook('onRequest', async (request, reply) => {
     if (request.url === '/health') return;
     const authHeader = request.headers.authorization;
