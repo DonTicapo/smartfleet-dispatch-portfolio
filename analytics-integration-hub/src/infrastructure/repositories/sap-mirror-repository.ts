@@ -102,7 +102,11 @@ export class SapMirrorRepository {
         this.sapDb.raw(`"Data"->>'ForeignName' AS "foreignName"`),
         this.sapDb.raw(`"Data"->>'User_Text' AS "userText"`),
         this.sapDb.raw(`"Data"->>'SalesUnit' AS "salesUnit"`),
-        this.sapDb.raw(`(regexp_match("Data"->>'ItemName', 'CONCRETO\\s+(\\d+)'))[1]::integer AS "strengthPsi"`),
+        this.sapDb.raw(`COALESCE(
+          (regexp_match("Data"->>'ItemName', 'CONCRETO\\s+(\\d+)'))[1],
+          (regexp_match("Data"->>'ItemName', 'MR-(\\d+)'))[1],
+          (regexp_match("Data"->>'ItemName', 'LODOCRETO\\s+(\\d+)'))[1]
+        )::integer AS "strengthPsi"`),
         this.sapDb.raw(`"Data"->>'Valid' AS "valid"`),
         this.sapDb.raw(`"Data"->>'Frozen' AS "frozen"`),
       )
