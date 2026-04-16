@@ -9,6 +9,19 @@ SmartFleet reads SAP B1 data from the **`sap_mirror` PostgreSQL database** (port
 
 The connector lives in **analytics-integration-hub** (port 3004).
 
+### Verified Sync Results (2026-04-16)
+
+| Entity | Records | Source → Target |
+|--------|---------|-----------------|
+| Plants | 8 | Warehouses → PEOB |
+| Customers | 4,862 | BusinessPartners (cCustomer) → OTL Core |
+| Sites | 4,592 | BPAddresses (ShipTo) → OTL Core |
+| Mix Designs | 265 | Items (Group 113 CONCRETOS) → OTL Core |
+| Orders | 1,445 | Sales Orders (open lines) → OTL Core |
+| Jobs | 658 | Auto-created for SAP order import |
+
+Triggered via `POST /integrations/sap/sync` on AIH.
+
 ---
 
 ## sap_mirror Table Structure
