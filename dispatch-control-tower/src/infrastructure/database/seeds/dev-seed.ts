@@ -8,9 +8,9 @@ export async function seed(knex: Knex): Promise<void> {
   await knex('trucks').del();
 
   const trucks = [
-    { id: 't0000000-0000-0000-0000-000000000001', number: 'T-101', license_plate: 'ABC-1234', capacity_amount: 10, capacity_unit: 'CY', status: 'AVAILABLE' },
-    { id: 't0000000-0000-0000-0000-000000000002', number: 'T-102', license_plate: 'DEF-5678', capacity_amount: 10, capacity_unit: 'CY', status: 'AVAILABLE' },
-    { id: 't0000000-0000-0000-0000-000000000003', number: 'T-103', license_plate: 'GHI-9012', capacity_amount: 8, capacity_unit: 'CY', status: 'AVAILABLE' },
+    { id: 't0000000-0000-0000-0000-000000000001', number: 'T-101', license_plate: 'ABC-1234', capacity_amount: 10, capacity_unit: 'M3', status: 'AVAILABLE' },
+    { id: 't0000000-0000-0000-0000-000000000002', number: 'T-102', license_plate: 'DEF-5678', capacity_amount: 10, capacity_unit: 'M3', status: 'AVAILABLE' },
+    { id: 't0000000-0000-0000-0000-000000000003', number: 'T-103', license_plate: 'GHI-9012', capacity_amount: 8, capacity_unit: 'M3', status: 'AVAILABLE' },
   ];
   await knex('trucks').insert(trucks);
 

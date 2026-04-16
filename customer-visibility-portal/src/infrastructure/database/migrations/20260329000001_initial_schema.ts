@@ -25,7 +25,7 @@ export async function up(knex: Knex): Promise<void> {
     t.text('site_name').notNullable();
     t.text('mix_design_name').notNullable();
     t.decimal('requested_quantity_amount', 10, 2).notNullable();
-    t.text('requested_quantity_unit').notNullable().defaultTo('CY');
+    t.text('requested_quantity_unit').notNullable().defaultTo('M3');
     t.date('requested_delivery_date').notNullable();
     t.text('status').notNullable().defaultTo('DRAFT');
     t.timestamp('last_synced_at', { useTz: true }).notNullable().defaultTo(knex.fn.now());

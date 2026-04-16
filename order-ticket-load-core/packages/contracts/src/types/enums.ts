@@ -39,6 +39,6 @@ export enum DeliveryState {
 }
 
 export enum UnitOfMeasure {
-  CUBIC_YARDS = 'CY',
-  CUBIC_METERS = 'CM',
+  M3 = 'M3',
+  CY = 'CY',
 }

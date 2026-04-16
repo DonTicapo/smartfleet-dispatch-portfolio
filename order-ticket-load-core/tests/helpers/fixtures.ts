@@ -66,7 +66,7 @@ export function makeOrder(
     job_id: jobId,
     mix_design_id: mixDesignId,
     requested_quantity_amount: 10.0,
-    requested_quantity_unit: 'CY',
+    requested_quantity_unit: 'M3',
     requested_delivery_date: '2026-04-01',
     status: 'DRAFT',
     created_by: 'test-user',

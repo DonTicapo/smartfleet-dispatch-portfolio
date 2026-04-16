@@ -7,7 +7,7 @@ export const CreateOrderBody = z.object({
   mixDesignId: z.string().uuid(),
   requestedQuantity: z.object({
     amount: z.number().positive(),
-    unit: z.enum(['CY', 'CM']),
+    unit: z.enum(['M3', 'CY']),
   }),
   requestedDeliveryDate: z.string(),
   requestedDeliveryTime: z.string().nullish(),

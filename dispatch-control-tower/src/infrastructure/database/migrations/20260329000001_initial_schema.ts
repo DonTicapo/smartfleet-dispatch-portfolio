@@ -9,7 +9,7 @@ export async function up(knex: Knex): Promise<void> {
     t.text('number').notNullable().unique();
     t.text('license_plate');
     t.decimal('capacity_amount', 10, 2);
-    t.text('capacity_unit').defaultTo('CY');
+    t.text('capacity_unit').defaultTo('M3');
     t.text('status').notNullable().defaultTo('AVAILABLE');
     t.text('home_plant_id');
     t.text('notes');
@@ -93,7 +93,7 @@ export async function up(knex: Knex): Promise<void> {
     t.text('site_name').notNullable();
     t.text('mix_design_code').notNullable();
     t.decimal('requested_quantity_amount', 10, 2);
-    t.text('requested_quantity_unit').defaultTo('CY');
+    t.text('requested_quantity_unit').defaultTo('M3');
     t.text('load_status').notNullable();
     t.uuid('truck_id').references('id').inTable('trucks');
     t.text('truck_number');

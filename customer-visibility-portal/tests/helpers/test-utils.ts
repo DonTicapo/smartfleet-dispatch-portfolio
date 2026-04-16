@@ -77,7 +77,7 @@ export function makeOrderView(customerId: string, overrides: Record<string, unkn
     site_name: 'Test Site',
     mix_design_name: 'Test Mix 3000',
     requested_quantity_amount: 50.0,
-    requested_quantity_unit: 'CY',
+    requested_quantity_unit: 'M3',
     requested_delivery_date: '2026-04-01',
     status: 'DRAFT',
     last_synced_at: new Date(),

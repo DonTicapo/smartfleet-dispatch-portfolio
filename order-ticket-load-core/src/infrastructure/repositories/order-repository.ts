@@ -72,8 +72,48 @@ export class OrderRepository {
     return row ? toEntity(row) : null;
   }
 
+  async findByExternalId(externalId: string): Promise<Order | null> {
+    const row = await this.db('orders').where({ external_id: externalId }).first();
+    return row ? toEntity(row) : null;
+  }
+
   async updateStatus(id: string, status: OrderStatus, trx?: Knex.Transaction): Promise<void> {
     const qb = trx || this.db;
     await qb('orders').where({ id }).update({ status, updated_at: new Date() });
+  }
+
+  async upsertByExternalId(
+    data: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>,
+    trx?: Knex.Transaction,
+  ): Promise<Order> {
+    const qb = trx || this.db;
+    const [row] = await qb('orders')
+      .insert({
+        external_id: data.externalId,
+        customer_id: data.customerId,
+        job_id: data.jobId,
+        mix_design_id: data.mixDesignId,
+        requested_quantity_amount: data.requestedQuantity.amount,
+        requested_quantity_unit: data.requestedQuantity.unit,
+        requested_delivery_date: data.requestedDeliveryDate,
+        requested_delivery_time: data.requestedDeliveryTime,
+        special_instructions: data.specialInstructions,
+        status: data.status,
+        created_by: data.createdBy,
+      })
+      .onConflict('external_id')
+      .merge({
+        customer_id: data.customerId,
+        mix_design_id: data.mixDesignId,
+        requested_quantity_amount: data.requestedQuantity.amount,
+        requested_quantity_unit: data.requestedQuantity.unit,
+        requested_delivery_date: data.requestedDeliveryDate,
+        requested_delivery_time: data.requestedDeliveryTime,
+        special_instructions: data.specialInstructions,
+        status: data.status,
+        updated_at: new Date(),
+      })
+      .returning('*');
+    return toEntity(row);
   }
 }

@@ -46,4 +46,30 @@ export class CustomerRepository {
     const row = await this.db('customers').where({ id }).first();
     return row ? toEntity(row) : null;
   }
+
+  async findByExternalId(externalId: string): Promise<Customer | null> {
+    const row = await this.db('customers').where({ external_id: externalId }).first();
+    return row ? toEntity(row) : null;
+  }
+
+  async upsertByExternalId(data: Omit<Customer, 'id' | 'createdAt' | 'updatedAt'>): Promise<Customer> {
+    const [row] = await this.db('customers')
+      .insert({
+        external_id: data.externalId,
+        name: data.name,
+        contact_email: data.contactEmail,
+        contact_phone: data.contactPhone,
+        billing_address: data.billingAddress ? JSON.stringify(data.billingAddress) : null,
+      })
+      .onConflict('external_id')
+      .merge({
+        name: data.name,
+        contact_email: data.contactEmail,
+        contact_phone: data.contactPhone,
+        billing_address: data.billingAddress ? JSON.stringify(data.billingAddress) : null,
+        updated_at: new Date(),
+      })
+      .returning('*');
+    return toEntity(row);
+  }
 }

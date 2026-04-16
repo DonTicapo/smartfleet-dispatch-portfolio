@@ -28,7 +28,7 @@ import { HeartbeatService } from './application/services/heartbeat-service.js';
 import { ConfigService } from './application/services/config-service.js';
 
 // Routes
-import { registerPlantRoutes } from './interfaces/http/routes/plant-routes.js';
+import { registerPlantRoutes, registerPlantImportRoute } from './interfaces/http/routes/plant-routes.js';
 import { registerBatchEventRoutes } from './interfaces/http/routes/batch-event-routes.js';
 import { registerScaleReadingRoutes } from './interfaces/http/routes/scale-reading-routes.js';
 import { registerMixerStatusRoutes } from './interfaces/http/routes/mixer-status-routes.js';
@@ -86,6 +86,7 @@ export async function buildApp() {
 
   // Routes
   registerPlantRoutes(app, plantService);
+  registerPlantImportRoute(app, plantRepo, auditRepo);
   registerBatchEventRoutes(app, batchEventService);
   registerScaleReadingRoutes(app, scaleReadingService);
   registerMixerStatusRoutes(app, mixerStatusService);

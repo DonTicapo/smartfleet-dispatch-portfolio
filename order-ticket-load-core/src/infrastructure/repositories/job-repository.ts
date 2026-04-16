@@ -48,4 +48,11 @@ export class JobRepository {
     const row = await this.db('jobs').where({ id }).first();
     return row ? toEntity(row) : null;
   }
+
+  async findByCustomerAndSite(customerId: string, siteId: string): Promise<Job | null> {
+    const row = await this.db('jobs')
+      .where({ customer_id: customerId, site_id: siteId })
+      .first();
+    return row ? toEntity(row) : null;
+  }
 }

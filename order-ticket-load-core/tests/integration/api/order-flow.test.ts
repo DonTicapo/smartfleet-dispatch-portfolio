@@ -39,7 +39,7 @@ describe('Order Flow — Full Vertical Slice', () => {
         job_id: job.id,
         mix_design_id: mixDesign.id,
         requested_quantity_amount: 50.0,
-        requested_quantity_unit: 'CY',
+        requested_quantity_unit: 'M3',
         requested_delivery_date: '2026-04-01',
         status: 'DRAFT',
         created_by: 'test-user',

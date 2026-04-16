@@ -62,7 +62,7 @@ export async function up(knex: Knex): Promise<void> {
     t.uuid('job_id').notNullable().references('id').inTable('jobs');
     t.uuid('mix_design_id').notNullable().references('id').inTable('mix_designs');
     t.decimal('requested_quantity_amount', 10, 2).notNullable();
-    t.text('requested_quantity_unit').notNullable().defaultTo('CY');
+    t.text('requested_quantity_unit').notNullable().defaultTo('M3');
     t.date('requested_delivery_date').notNullable();
     t.text('requested_delivery_time');
     t.text('special_instructions');
@@ -99,7 +99,7 @@ export async function up(knex: Knex): Promise<void> {
     t.text('driver_id');
     t.uuid('mix_design_id').notNullable().references('id').inTable('mix_designs');
     t.decimal('actual_quantity_amount', 10, 2);
-    t.text('actual_quantity_unit').defaultTo('CY');
+    t.text('actual_quantity_unit').defaultTo('M3');
     t.text('status').notNullable().defaultTo('SCHEDULED');
     t.timestamp('batched_at', { useTz: true });
     t.timestamp('departed_plant_at', { useTz: true });

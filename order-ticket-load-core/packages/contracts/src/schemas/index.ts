@@ -16,7 +16,7 @@ export const GeoPointSchema = z.object({
 
 export const QuantitySchema = z.object({
   amount: z.number().positive(),
-  unit: z.enum(['CY', 'CM']),
+  unit: z.enum(['M3', 'CY']),
 });
 
 export const CreateCustomerSchema = z.object({

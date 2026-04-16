@@ -50,4 +50,27 @@ export class SiteRepository {
     const row = await this.db('sites').where({ id }).first();
     return row ? toEntity(row) : null;
   }
+
+  async findByCustomerAndName(customerId: string, name: string): Promise<Site | null> {
+    const row = await this.db('sites').where({ customer_id: customerId, name }).first();
+    return row ? toEntity(row) : null;
+  }
+
+  async upsert(data: Omit<Site, 'id' | 'createdAt' | 'updatedAt'>): Promise<Site> {
+    const existing = await this.findByCustomerAndName(data.customerId, data.name);
+    if (existing) {
+      const [row] = await this.db('sites')
+        .where({ id: existing.id })
+        .update({
+          address: JSON.stringify(data.address),
+          geo_point: data.geoPoint ? JSON.stringify(data.geoPoint) : null,
+          geofence_radius_meters: data.geofenceRadiusMeters,
+          notes: data.notes,
+          updated_at: new Date(),
+        })
+        .returning('*');
+      return toEntity(row);
+    }
+    return this.create(data);
+  }
 }

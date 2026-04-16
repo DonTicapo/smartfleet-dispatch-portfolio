@@ -9,7 +9,7 @@ export class TruckService {
   async create(data: { number: string; externalId?: string | null; licensePlate?: string | null; capacityAmount?: number | null; capacityUnit?: string; homePlantId?: string | null; notes?: string | null }, actor: string): Promise<Truck> {
     const truck = await this.truckRepo.create({
       number: data.number, external_id: data.externalId ?? null, license_plate: data.licensePlate ?? null,
-      capacity_amount: data.capacityAmount ?? null, capacity_unit: data.capacityUnit ?? 'CY',
+      capacity_amount: data.capacityAmount ?? null, capacity_unit: data.capacityUnit ?? 'M3',
       home_plant_id: data.homePlantId ?? null, notes: data.notes ?? null,
     });
     await this.auditRepo.log({ entityType: 'Truck', entityId: truck.id, action: 'CREATE', actor });

@@ -8,7 +8,7 @@ export const CreateLoadBody = z.object({
   actualQuantity: z
     .object({
       amount: z.number().positive(),
-      unit: z.enum(['CY', 'CM']),
+      unit: z.enum(['M3', 'CY']),
     })
     .nullish(),
 });

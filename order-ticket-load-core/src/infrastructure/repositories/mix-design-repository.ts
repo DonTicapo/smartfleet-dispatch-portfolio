@@ -51,4 +51,33 @@ export class MixDesignRepository {
     const row = await this.db('mix_designs').where({ id }).first();
     return row ? toEntity(row) : null;
   }
+
+  async findByCode(code: string): Promise<MixDesign | null> {
+    const row = await this.db('mix_designs').where({ code }).orderBy('version', 'desc').first();
+    return row ? toEntity(row) : null;
+  }
+
+  async upsertByCode(data: Omit<MixDesign, 'id' | 'createdAt' | 'updatedAt'>): Promise<MixDesign> {
+    const [row] = await this.db('mix_designs')
+      .insert({
+        code: data.code,
+        name: data.name,
+        description: data.description,
+        strength_psi: data.strengthPsi,
+        slump_inches: data.slumpInches,
+        version: data.version,
+        is_active: data.isActive,
+      })
+      .onConflict(['code', 'version'])
+      .merge({
+        name: data.name,
+        description: data.description,
+        strength_psi: data.strengthPsi,
+        slump_inches: data.slumpInches,
+        is_active: data.isActive,
+        updated_at: new Date(),
+      })
+      .returning('*');
+    return toEntity(row);
+  }
 }

@@ -25,7 +25,7 @@ export default function TrucksPage() {
   const [addNumber, setAddNumber] = useState('');
   const [addPlate, setAddPlate] = useState('');
   const [addCapacity, setAddCapacity] = useState('');
-  const [addUnit, setAddUnit] = useState<'CY' | 'CM'>('CY');
+  const [addUnit, setAddUnit] = useState<'M3' | 'CY'>('M3');
   const [addNotes, setAddNotes] = useState('');
   const [addError, setAddError] = useState('');
   const [adding, setAdding] = useState(false);
@@ -425,12 +425,12 @@ export default function TrucksPage() {
                   <select
                     value={addUnit}
                     onChange={(e) =>
-                      setAddUnit(e.target.value as 'CY' | 'CM')
+                      setAddUnit(e.target.value as 'M3' | 'CY')
                     }
                     className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
                   >
+                    <option value="M3">M3 (Cubic Meters)</option>
                     <option value="CY">CY (Cubic Yards)</option>
-                    <option value="CM">CM (Cubic Meters)</option>
                   </select>
                 </div>
               </div>

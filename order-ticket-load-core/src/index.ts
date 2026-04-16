@@ -36,6 +36,7 @@ import { registerOrderRoutes } from './interfaces/http/routes/order-routes.js';
 import { registerTicketRoutes } from './interfaces/http/routes/ticket-routes.js';
 import { registerLoadRoutes } from './interfaces/http/routes/load-routes.js';
 import { registerDeliveryEventRoutes } from './interfaces/http/routes/delivery-event-routes.js';
+import { registerImportRoutes } from './interfaces/http/routes/import-routes.js';
 
 export async function buildApp() {
   const config = getConfig();
@@ -71,8 +72,7 @@ export async function buildApp() {
   const customerRepo = new CustomerRepository(db);
   const siteRepo = new SiteRepository(db);
   const jobRepo = new JobRepository(db);
-  // MixDesignRepository instantiated for future use in mix-design routes
-  new MixDesignRepository(db);
+  const mixDesignRepo = new MixDesignRepository(db);
   const orderRepo = new OrderRepository(db);
   const ticketRepo = new TicketRepository(db);
   const loadRepo = new LoadRepository(db);
@@ -95,6 +95,7 @@ export async function buildApp() {
   registerTicketRoutes(app, ticketService);
   registerLoadRoutes(app, loadService);
   registerDeliveryEventRoutes(app, deliveryEventService);
+  registerImportRoutes(app, { customerRepo, siteRepo, jobRepo, mixDesignRepo, orderRepo, auditRepo });
 
   return app;
 }

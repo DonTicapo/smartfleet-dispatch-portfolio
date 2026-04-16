@@ -112,7 +112,7 @@ export interface CreateTruckBody {
   externalId?: string | null;
   licensePlate?: string | null;
   capacityAmount?: number | null;
-  capacityUnit?: 'CY' | 'CM';
+  capacityUnit?: 'M3' | 'CY';
   homePlantId?: string | null;
   notes?: string | null;
 }

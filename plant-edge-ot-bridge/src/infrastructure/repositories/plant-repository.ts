@@ -65,6 +65,27 @@ export class PlantRepository {
     return rows.map(toEntity);
   }
 
+  async upsertByCode(data: Omit<Plant, 'id' | 'createdAt' | 'updatedAt'>): Promise<Plant> {
+    const [row] = await this.db('plants')
+      .insert({
+        code: data.code,
+        name: data.name,
+        location: data.location ? JSON.stringify(data.location) : null,
+        timezone: data.timezone,
+        is_active: data.isActive,
+      })
+      .onConflict('code')
+      .merge({
+        name: data.name,
+        location: data.location ? JSON.stringify(data.location) : null,
+        timezone: data.timezone,
+        is_active: data.isActive,
+        updated_at: new Date(),
+      })
+      .returning('*');
+    return toEntity(row);
+  }
+
   async update(id: string, updates: Partial<Omit<Plant, 'id' | 'createdAt' | 'updatedAt'>>, trx?: Knex.Transaction): Promise<Plant> {
     const qb = trx || this.db;
     const mapped: Record<string, unknown> = { updated_at: new Date() };

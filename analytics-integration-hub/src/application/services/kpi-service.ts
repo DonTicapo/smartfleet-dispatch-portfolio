@@ -268,7 +268,7 @@ export class KpiService {
       dimension: input.dimension,
       dimensionId: dimId,
       value: Math.round(volume * 10000) / 10000,
-      unit: 'CY',
+      unit: 'M3',
       periodStart: input.periodStart,
       periodEnd: input.periodEnd,
       computedAt: now,

@@ -8,7 +8,7 @@ function toEntity(row: Record<string, unknown>): DispatchBoardEntry {
     ticketNumber: row.ticket_number as string, customerName: row.customer_name as string,
     siteName: row.site_name as string, mixDesignCode: row.mix_design_code as string,
     requestedQuantityAmount: row.requested_quantity_amount ? parseFloat(row.requested_quantity_amount as string) : null,
-    requestedQuantityUnit: (row.requested_quantity_unit as string) || 'CY',
+    requestedQuantityUnit: (row.requested_quantity_unit as string) || 'M3',
     loadStatus: row.load_status as string, truckId: row.truck_id as string | null,
     truckNumber: row.truck_number as string | null, driverId: row.driver_id as string | null,
     driverName: row.driver_name as string | null, assignmentId: row.assignment_id as string | null,

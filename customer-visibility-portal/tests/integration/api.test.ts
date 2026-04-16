@@ -43,7 +43,7 @@ describe('Customer Visibility Portal — Full Vertical Slice', () => {
           site_name: 'Bridge Construction Site A',
           mix_design_name: 'High-Strength 4000 PSI',
           requested_quantity_amount: 120.0,
-          requested_quantity_unit: 'CY',
+          requested_quantity_unit: 'M3',
           status: 'CONFIRMED',
         }),
       )

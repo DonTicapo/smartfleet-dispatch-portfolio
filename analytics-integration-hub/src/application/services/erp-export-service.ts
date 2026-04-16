@@ -125,7 +125,7 @@ export class ErpExportService {
       items.push({
         loadId: event.payload.loadId || event.aggregateId,
         quantity: event.payload.quantity || event.payload.actualQuantityAmount || 0,
-        unit: event.payload.unit || 'CY',
+        unit: event.payload.unit || 'M3',
         completedAt: event.occurredAt.toISOString(),
         mixDesign: event.payload.mixDesignCode || null,
         ticketNumber: event.payload.ticketNumber || null,

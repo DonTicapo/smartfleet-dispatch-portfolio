@@ -64,7 +64,7 @@ export class LoadRepository {
         driver_id: data.driverId,
         mix_design_id: data.mixDesignId,
         actual_quantity_amount: data.actualQuantity?.amount ?? null,
-        actual_quantity_unit: data.actualQuantity?.unit ?? 'CY',
+        actual_quantity_unit: data.actualQuantity?.unit ?? 'M3',
         status: data.status,
       })
       .returning('*');
