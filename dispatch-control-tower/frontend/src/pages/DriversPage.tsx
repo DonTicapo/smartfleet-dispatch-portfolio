@@ -118,14 +118,14 @@ export default function DriversPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Drivers</h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <h1 className="text-2xl font-bold text-sf-text-900 font-serif">Drivers</h1>
+          <p className="text-sm text-sf-text-500 mt-1">
             Manage driver roster and availability
           </p>
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] transition-all"
         >
           <svg
             className="w-4 h-4"
@@ -151,7 +151,7 @@ export default function DriversPage() {
       )}
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-sf-border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200">
             <thead>
@@ -216,9 +216,9 @@ export default function DriversPage() {
                   <tr
                     key={driver.id}
                     onClick={() => openDetail(driver)}
-                    className={`cursor-pointer ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-blue-50/40 transition-colors`}
+                    className={`cursor-pointer ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-sf-orange-light/40 transition-colors`}
                   >
-                    <td className="px-6 py-3.5 text-sm font-medium text-slate-900">
+                    <td className="px-6 py-3.5 text-sm font-medium text-sf-text-900">
                       {driver.firstName} {driver.lastName}
                     </td>
                     <td className="px-6 py-3.5 text-sm text-slate-600 font-mono">
@@ -248,9 +248,9 @@ export default function DriversPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setSelected(null)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
+          <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-slate-900">
+              <h2 className="text-lg font-semibold text-sf-text-900">
                 {selected.firstName} {selected.lastName}
               </h2>
               <button
@@ -283,7 +283,7 @@ export default function DriversPage() {
                   onChange={(e) =>
                     setEditStatus(e.target.value as DriverStatus)
                   }
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 >
                   <option value="AVAILABLE">Available</option>
                   <option value="ASSIGNED">Assigned</option>
@@ -299,7 +299,7 @@ export default function DriversPage() {
                   type="text"
                   value={editPhone}
                   onChange={(e) => setEditPhone(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 />
               </div>
               <div>
@@ -310,20 +310,20 @@ export default function DriversPage() {
                   value={editNotes}
                   onChange={(e) => setEditNotes(e.target.value)}
                   rows={3}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition resize-none"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition resize-none"
                 />
               </div>
               <div className="flex items-center justify-end gap-3 pt-2">
                 <button
                   onClick={() => setSelected(null)}
-                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
                 >
                   Close
                 </button>
                 <button
                   onClick={handleUpdate}
                   disabled={saving}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] disabled:opacity-50 transition-all"
                 >
                   {saving ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -340,9 +340,9 @@ export default function DriversPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowAdd(false)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
+          <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-slate-900">
+              <h2 className="text-lg font-semibold text-sf-text-900">
                 Add Driver
               </h2>
               <button
@@ -382,7 +382,7 @@ export default function DriversPage() {
                     required
                     value={addFirst}
                     onChange={(e) => setAddFirst(e.target.value)}
-                    className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                    className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                     placeholder="John"
                   />
                 </div>
@@ -395,7 +395,7 @@ export default function DriversPage() {
                     required
                     value={addLast}
                     onChange={(e) => setAddLast(e.target.value)}
-                    className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                    className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                     placeholder="Doe"
                   />
                 </div>
@@ -408,7 +408,7 @@ export default function DriversPage() {
                   type="text"
                   value={addPhone}
                   onChange={(e) => setAddPhone(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                   placeholder="(555) 123-4567"
                 />
               </div>
@@ -420,7 +420,7 @@ export default function DriversPage() {
                   type="text"
                   value={addLicense}
                   onChange={(e) => setAddLicense(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                   placeholder="CDL-12345"
                 />
               </div>
@@ -432,7 +432,7 @@ export default function DriversPage() {
                   value={addNotes}
                   onChange={(e) => setAddNotes(e.target.value)}
                   rows={2}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition resize-none"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition resize-none"
                   placeholder="Optional notes..."
                 />
               </div>
@@ -440,14 +440,14 @@ export default function DriversPage() {
                 <button
                   type="button"
                   onClick={() => setShowAdd(false)}
-                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={adding}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] disabled:opacity-50 transition-all"
                 >
                   {adding ? 'Creating...' : 'Add Driver'}
                 </button>

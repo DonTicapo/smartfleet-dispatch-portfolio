@@ -21,8 +21,8 @@ export default function Layout() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
       isActive
-        ? 'bg-slate-700 text-white'
-        : 'text-slate-300 hover:bg-slate-700/50 hover:text-white'
+        ? 'bg-sf-orange-light text-sf-orange'
+        : 'text-slate-300 hover:bg-white/10 hover:text-white'
     }`;
 
   const navItems = [
@@ -111,40 +111,27 @@ export default function Layout() {
   ];
 
   return (
-    <div className="min-h-screen flex bg-slate-50">
+    <div className="min-h-screen flex bg-sf-bg-gray">
       {/* Sidebar */}
       <aside
-        className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-slate-800 flex flex-col transition-all duration-200 flex-shrink-0`}
+        className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-sf-navy flex flex-col transition-all duration-200 flex-shrink-0`}
       >
         {/* Brand */}
-        <div className="h-16 flex items-center gap-3 px-4 border-b border-slate-700">
-          <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0">
-            <svg
-              className="w-5 h-5 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10M13 6h4l3 4v6h-2"
-              />
-            </svg>
-          </div>
-          {!sidebarCollapsed && (
+        <div className="h-16 flex items-center gap-3 px-4 border-b border-white/10">
+          {!sidebarCollapsed ? (
             <div>
-              <span className="text-sm font-bold text-white">SmartFleet</span>
-              <span className="block text-[10px] text-slate-400 leading-tight">
+              <div className="text-sm font-bold">
+                <span className="text-white">SMART</span>
+                <span className="text-sf-orange">FLEET</span>
+              </div>
+              <span className="block text-[10px] text-white/60 leading-tight">
                 Dispatch Control Tower
               </span>
+            </div>
+          ) : (
+            <div className="text-xs font-bold mx-auto">
+              <span className="text-white">S</span>
+              <span className="text-sf-orange">F</span>
             </div>
           )}
         </div>
@@ -166,10 +153,10 @@ export default function Layout() {
         </nav>
 
         {/* Collapse toggle */}
-        <div className="px-3 py-3 border-t border-slate-700">
+        <div className="px-3 py-3 border-t border-white/10">
           <button
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="w-full flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-white hover:bg-slate-700/50 transition"
+            className="w-full flex items-center justify-center p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition"
             title={sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
             <svg
@@ -192,9 +179,9 @@ export default function Layout() {
       {/* Main content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top header */}
-        <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 flex-shrink-0">
-          <div className="text-sm text-slate-500">
-            <span className="font-medium text-slate-900">
+        <header className="h-16 bg-white border-b border-sf-border flex items-center justify-between px-6 flex-shrink-0">
+          <div className="text-sm text-sf-text-500">
+            <span className="font-medium text-sf-text-900">
               {now.toLocaleDateString('en-US', {
                 weekday: 'long',
                 year: 'numeric',
@@ -211,12 +198,12 @@ export default function Layout() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-sm text-slate-500">
+            <span className="text-sm text-sf-text-500">
               {user?.email ?? user?.sub ?? 'Dispatcher'}
             </span>
             <button
               onClick={handleLogout}
-              className="text-sm font-medium text-slate-500 hover:text-red-600 transition-colors"
+              className="text-sm font-medium text-sf-text-500 hover:text-sf-danger transition-colors"
             >
               Logout
             </button>

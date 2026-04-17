@@ -79,7 +79,7 @@ export default function MessagesPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sf-orange" />
       </div>
     );
   }
@@ -97,8 +97,8 @@ export default function MessagesPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Messages</h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl font-bold text-sf-text-900">Messages</h1>
+        <p className="text-sm text-sf-text-500 mt-1">
           {unreadCount > 0
             ? `${unreadCount} unread message${unreadCount !== 1 ? 's' : ''}`
             : 'All messages read'}
@@ -120,7 +120,7 @@ export default function MessagesPage() {
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
             />
           </svg>
-          <p className="text-slate-500">No messages</p>
+          <p className="text-sf-text-500">No messages</p>
         </div>
       ) : (
         <div className="space-y-2">
@@ -132,7 +132,7 @@ export default function MessagesPage() {
                 key={msg.id}
                 className={`bg-white rounded-xl border shadow-sm overflow-hidden transition-colors ${
                   !msg.isRead
-                    ? 'border-blue-200 bg-blue-50/30'
+                    ? 'border-sf-orange-mid bg-sf-orange-light/30'
                     : 'border-slate-200'
                 }`}
               >
@@ -143,7 +143,7 @@ export default function MessagesPage() {
                   {/* Unread indicator */}
                   <div className="flex-shrink-0 mt-1.5">
                     {!msg.isRead ? (
-                      <span className="block w-2.5 h-2.5 rounded-full bg-blue-500" />
+                      <span className="block w-2.5 h-2.5 rounded-full bg-sf-orange" />
                     ) : (
                       <span className="block w-2.5 h-2.5 rounded-full bg-transparent" />
                     )}
@@ -155,7 +155,7 @@ export default function MessagesPage() {
                       <h3
                         className={`text-sm truncate ${
                           !msg.isRead
-                            ? 'font-bold text-slate-900'
+                            ? 'font-bold text-sf-text-900'
                             : 'font-medium text-slate-700'
                         }`}
                       >
@@ -164,7 +164,7 @@ export default function MessagesPage() {
                       <StatusBadge status={msg.severity} />
                     </div>
                     {!isExpanded && (
-                      <p className="text-sm text-slate-500 truncate">
+                      <p className="text-sm text-sf-text-500 truncate">
                         {msg.body}
                       </p>
                     )}

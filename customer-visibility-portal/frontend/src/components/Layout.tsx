@@ -40,20 +40,20 @@ export default function Layout() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
       isActive
-        ? 'bg-blue-50 text-blue-700'
-        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+        ? 'bg-sf-orange-light text-sf-orange'
+        : 'text-sf-text-500 hover:bg-slate-100 hover:text-sf-text-900'
     }`;
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Top header bar */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-30">
+      <header className="bg-white border-b border-sf-border sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             {/* Logo / brand */}
             <div className="flex items-center gap-3">
               <button
-                className="lg:hidden p-2 -ml-2 rounded-md text-slate-500 hover:text-slate-700 hover:bg-slate-100"
+                className="lg:hidden p-2 -ml-2 rounded-md text-sf-text-500 hover:text-sf-text-700 hover:bg-slate-100"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -81,30 +81,19 @@ export default function Layout() {
                 </svg>
               </button>
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
-                  <svg
-                    className="w-5 h-5 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10M13 6h4l3 4v6h-2"
-                    />
-                  </svg>
+                <div className="hidden sm:flex flex-col">
+                  <span className="text-lg font-bold leading-tight">
+                    <span className="text-sf-navy">SMART</span>
+                    <span className="text-sf-orange">FLEET</span>
+                  </span>
+                  <span className="text-[10px] font-medium text-sf-text-500 tracking-wider uppercase">Customer Portal</span>
                 </div>
-                <span className="text-lg font-bold text-slate-900 hidden sm:inline">
-                  SmartFleet
-                </span>
+                <div className="sm:hidden flex items-center">
+                  <span className="text-lg font-bold">
+                    <span className="text-sf-navy">S</span>
+                    <span className="text-sf-orange">F</span>
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -151,12 +140,12 @@ export default function Layout() {
 
             {/* User + logout */}
             <div className="flex items-center gap-4">
-              <span className="text-sm text-slate-500 hidden sm:inline">
+              <span className="text-sm text-sf-text-500 hidden sm:inline">
                 {user?.companyName ?? user?.email}
               </span>
               <button
                 onClick={handleLogout}
-                className="text-sm font-medium text-slate-500 hover:text-red-600 transition-colors"
+                className="text-sm font-medium text-sf-text-500 hover:text-red-600 transition-colors"
               >
                 Logout
               </button>
@@ -167,7 +156,7 @@ export default function Layout() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-2 space-y-1">
+        <div className="lg:hidden bg-white border-b border-sf-border px-4 py-2 space-y-1">
           <NavLink
             to="/"
             end
@@ -199,8 +188,8 @@ export default function Layout() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-4">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-400">
+      <footer className="bg-white border-t border-sf-border py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-sf-text-500">
           SmartFleet Dispatch &mdash; Customer Visibility Portal
         </div>
       </footer>

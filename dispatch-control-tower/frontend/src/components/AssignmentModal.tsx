@@ -93,9 +93,9 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
         onClick={handleClose}
       />
       {/* Modal */}
-      <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-lg mx-4 p-6">
+      <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-lg mx-4 p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-slate-900">
+          <h2 className="text-lg font-semibold text-sf-text-900">
             New Assignment
           </h2>
           <button
@@ -138,7 +138,7 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
               required
               value={loadId}
               onChange={(e) => setLoadId(e.target.value)}
-              className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+              className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
               placeholder="Enter load ID"
             />
           </div>
@@ -155,7 +155,7 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
               required
               value={truckId}
               onChange={(e) => setTruckId(e.target.value)}
-              className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+              className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
             >
               <option value="">Select a truck...</option>
               {trucks.map((t) => (
@@ -185,7 +185,7 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
               required
               value={driverId}
               onChange={(e) => setDriverId(e.target.value)}
-              className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+              className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
             >
               <option value="">Select a driver...</option>
               {drivers.map((d) => (
@@ -214,7 +214,7 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={2}
-              className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition resize-none"
+              className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition resize-none"
               placeholder="Optional notes..."
             />
           </div>
@@ -223,14 +223,14 @@ export default function AssignmentModal({ open, onClose, onCreated }: Props) {
             <button
               type="button"
               onClick={handleClose}
-              className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+              className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={submitting}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+              className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               {submitting ? 'Creating...' : 'Create Assignment'}
             </button>

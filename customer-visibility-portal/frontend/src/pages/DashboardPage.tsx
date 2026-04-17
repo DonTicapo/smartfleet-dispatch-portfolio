@@ -51,7 +51,7 @@ export default function DashboardPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sf-orange" />
       </div>
     );
   }
@@ -67,8 +67,8 @@ export default function DashboardPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Orders</h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl font-bold text-sf-text-900">Orders</h1>
+        <p className="text-sm text-sf-text-500 mt-1">
           Track your concrete delivery orders
         </p>
       </div>
@@ -88,7 +88,7 @@ export default function DashboardPage() {
               d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
             />
           </svg>
-          <p className="text-slate-500">No orders found</p>
+          <p className="text-sf-text-500">No orders found</p>
         </div>
       ) : (
         <>
@@ -97,25 +97,25 @@ export default function DashboardPage() {
             <table className="w-full">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Order ID
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Job
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Site
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Mix Design
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Qty
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Delivery
                   </th>
-                  <th className="text-left text-xs font-semibold text-slate-500 uppercase tracking-wider px-6 py-3">
+                  <th className="text-left text-xs font-semibold text-sf-text-500 uppercase tracking-wider px-6 py-3">
                     Status
                   </th>
                 </tr>
@@ -129,12 +129,12 @@ export default function DashboardPage() {
                     <td className="px-6 py-4">
                       <Link
                         to={`/orders/${order.id}`}
-                        className="text-sm font-mono text-blue-600 hover:text-blue-800 hover:underline"
+                        className="text-sm font-mono text-sf-orange hover:text-sf-orange-hover hover:underline"
                       >
                         {truncateId(order.id)}
                       </Link>
                     </td>
-                    <td className="px-6 py-4 text-sm text-slate-900">
+                    <td className="px-6 py-4 text-sm text-sf-text-900">
                       {order.jobName}
                     </td>
                     <td className="px-6 py-4 text-sm text-slate-600">
@@ -164,7 +164,7 @@ export default function DashboardPage() {
               <Link
                 key={order.id}
                 to={`/orders/${order.id}`}
-                className="block bg-white rounded-xl border border-slate-200 shadow-sm p-4 hover:border-blue-300 transition-colors"
+                className="block bg-white rounded-xl border border-slate-200 shadow-sm p-4 hover:border-sf-orange-mid transition-colors"
               >
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-xs font-mono text-slate-400">
@@ -172,13 +172,13 @@ export default function DashboardPage() {
                   </span>
                   <StatusBadge status={order.status} />
                 </div>
-                <h3 className="text-sm font-semibold text-slate-900">
+                <h3 className="text-sm font-semibold text-sf-text-900">
                   {order.jobName}
                 </h3>
-                <p className="text-xs text-slate-500 mt-0.5">
+                <p className="text-xs text-sf-text-500 mt-0.5">
                   {order.siteName}
                 </p>
-                <div className="flex items-center justify-between mt-3 text-xs text-slate-500">
+                <div className="flex items-center justify-between mt-3 text-xs text-sf-text-500">
                   <span>
                     {order.mixDesign} &middot; {order.quantityOrdered}{' '}
                     {order.quantityUnit}

@@ -80,8 +80,8 @@ export default function ExceptionsPage() {
     <div>
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-slate-900">Exceptions</h1>
-        <p className="text-sm text-slate-500 mt-1">
+        <h1 className="text-2xl font-bold text-sf-text-900 font-serif">Exceptions</h1>
+        <p className="text-sm text-sf-text-500 mt-1">
           Track and resolve dispatch exceptions and incidents
         </p>
       </div>
@@ -97,7 +97,7 @@ export default function ExceptionsPage() {
             }}
             className={`px-4 py-2 text-sm font-medium rounded-md transition ${
               activeTab === tab.key
-                ? 'bg-white text-slate-900 shadow-sm'
+                ? 'bg-white text-sf-text-900 shadow-sm'
                 : 'text-slate-500 hover:text-slate-700'
             }`}
           >
@@ -148,7 +148,7 @@ export default function ExceptionsPage() {
             return (
               <div
                 key={exc.id}
-                className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden"
+                className="bg-white rounded-lg border border-sf-border shadow-sm overflow-hidden"
               >
                 {/* Card header */}
                 <button
@@ -173,7 +173,7 @@ export default function ExceptionsPage() {
                           category="severity"
                         />
                       </div>
-                      <h3 className="mt-2 text-sm font-semibold text-slate-900">
+                      <h3 className="mt-2 text-sm font-semibold text-sf-text-900">
                         {exc.title}
                       </h3>
                       {exc.description && (
@@ -209,7 +209,7 @@ export default function ExceptionsPage() {
                     <div className="grid grid-cols-2 gap-4 text-sm mb-4">
                       <div>
                         <span className="text-slate-500">Reported by:</span>{' '}
-                        <span className="font-medium text-slate-900">
+                        <span className="font-medium text-sf-text-900">
                           {exc.reportedBy}
                         </span>
                       </div>
@@ -256,7 +256,7 @@ export default function ExceptionsPage() {
                           <span className="text-slate-500">
                             Resolved by:
                           </span>{' '}
-                          <span className="font-medium text-slate-900">
+                          <span className="font-medium text-sf-text-900">
                             {exc.resolvedBy}
                           </span>
                         </div>
@@ -295,7 +295,7 @@ export default function ExceptionsPage() {
                               type="text"
                               value={resolution}
                               onChange={(e) => setResolution(e.target.value)}
-                              className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                              className="rounded-lg border border-sf-border px-3 py-2 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                               placeholder="Resolution notes..."
                             />
                             <button

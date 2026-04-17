@@ -152,7 +152,7 @@ export default function LoadTrackingPage() {
       connecting: { color: 'bg-yellow-500', label: 'Connecting...' },
       connected: { color: 'bg-green-500', label: 'Live (WebSocket)' },
       reconnecting: { color: 'bg-yellow-500', label: 'Reconnecting...' },
-      polling: { color: 'bg-blue-500', label: 'Live (polling)' },
+      polling: { color: 'bg-sf-orange', label: 'Live (polling)' },
     };
     const s = states[connState];
     return (
@@ -173,7 +173,7 @@ export default function LoadTrackingPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sf-orange" />
       </div>
     );
   }
@@ -192,7 +192,7 @@ export default function LoadTrackingPage() {
       <nav className="mb-6">
         <Link
           to="/"
-          className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          className="text-sm text-sf-orange hover:text-sf-orange-hover hover:underline"
         >
           &larr; Back to Orders
         </Link>
@@ -201,8 +201,8 @@ export default function LoadTrackingPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Load Tracking</h1>
-          <p className="text-sm text-slate-500 mt-0.5">
+          <h1 className="text-2xl font-bold text-sf-text-900">Load Tracking</h1>
+          <p className="text-sm text-sf-text-500 mt-0.5">
             Truck {load.truckId}
           </p>
         </div>
@@ -211,20 +211,20 @@ export default function LoadTrackingPage() {
 
       {/* ETA hero card */}
       {load.etaMinutes != null && load.status !== 'COMPLETED' && (
-        <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl shadow-lg p-6 mb-6 text-white">
-          <p className="text-sm font-medium text-blue-100 uppercase tracking-wider">
+        <div className="bg-gradient-to-br from-sf-orange to-sf-orange-hover rounded-xl shadow-lg p-6 mb-6 text-white">
+          <p className="text-sm font-medium text-orange-100 uppercase tracking-wider">
             Estimated Time of Arrival
           </p>
           <div className="flex items-baseline gap-2 mt-2">
             <span className="text-5xl font-bold">{load.etaMinutes}</span>
-            <span className="text-xl text-blue-200">minutes</span>
+            <span className="text-xl text-orange-200">minutes</span>
           </div>
         </div>
       )}
 
       {/* Progress stepper */}
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-6">
-        <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
+        <h2 className="text-sm font-semibold text-sf-text-500 uppercase tracking-wider mb-4">
           Delivery Progress
         </h2>
         <LoadProgress currentStatus={load.status} />
@@ -234,31 +234,31 @@ export default function LoadTrackingPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
         {/* Driver info */}
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
+          <h3 className="text-sm font-semibold text-sf-text-500 uppercase tracking-wider mb-4">
             Driver Information
           </h3>
           <div className="space-y-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-sf-text-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900">{load.driverName}</p>
-                <p className="text-xs text-slate-500">{load.driverPhone}</p>
+                <p className="text-sm font-semibold text-sf-text-900">{load.driverName}</p>
+                <p className="text-xs text-sf-text-500">{load.driverPhone}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
-                <svg className="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-sf-text-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10M13 6h4l3 4v6h-2" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900">Truck {load.truckId}</p>
-                <p className="text-xs text-slate-500">Vehicle ID</p>
+                <p className="text-sm font-semibold text-sf-text-900">Truck {load.truckId}</p>
+                <p className="text-xs text-sf-text-500">Vehicle ID</p>
               </div>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function LoadTrackingPage() {
 
         {/* Location & timestamps */}
         <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-          <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-4">
+          <h3 className="text-sm font-semibold text-sf-text-500 uppercase tracking-wider mb-4">
             Location & Timing
           </h3>
           <div className="space-y-3">

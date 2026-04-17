@@ -46,9 +46,9 @@ export default function LoadProgress({ currentStatus }: Props) {
                     w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold
                     ${
                       isCompleted
-                        ? 'bg-blue-600 text-white'
+                        ? 'bg-sf-orange text-white'
                         : isCurrent
-                          ? 'bg-blue-600 text-white ring-4 ring-blue-200'
+                          ? 'bg-sf-orange text-white ring-4 ring-sf-orange-light'
                           : 'bg-slate-200 text-slate-500'
                     }
                   `}
@@ -74,7 +74,7 @@ export default function LoadProgress({ currentStatus }: Props) {
                 <span
                   className={`mt-1.5 text-[10px] font-medium whitespace-nowrap ${
                     isCompleted || isCurrent
-                      ? 'text-blue-700'
+                      ? 'text-sf-orange'
                       : 'text-slate-400'
                   }`}
                 >
@@ -86,7 +86,7 @@ export default function LoadProgress({ currentStatus }: Props) {
               {i < STEPS.length - 1 && (
                 <div
                   className={`flex-1 h-0.5 mx-1 min-w-[24px] ${
-                    i < currentIndex ? 'bg-blue-600' : 'bg-slate-200'
+                    i < currentIndex ? 'bg-sf-orange' : 'bg-slate-200'
                   }`}
                 />
               )}

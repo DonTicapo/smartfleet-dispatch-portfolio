@@ -112,8 +112,8 @@ export default function DispatchBoardPage() {
       {/* Page header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Dispatch Board</h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <h1 className="text-2xl font-bold text-sf-text-900 font-serif">Dispatch Board</h1>
+          <p className="text-sm text-sf-text-500 mt-1">
             Manage daily load assignments and track dispatch operations
           </p>
         </div>
@@ -122,12 +122,12 @@ export default function DispatchBoardPage() {
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+            className="rounded-lg border border-sf-border px-3 py-2 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
           />
           <button
             onClick={handleRefresh}
             disabled={refreshing}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 transition"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 disabled:opacity-50 transition"
           >
             <svg
               className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`}
@@ -146,7 +146,7 @@ export default function DispatchBoardPage() {
           </button>
           <button
             onClick={() => setShowAssignmentModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition shadow-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] transition-all"
           >
             <svg
               className="w-4 h-4"
@@ -167,7 +167,7 @@ export default function DispatchBoardPage() {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 animate-fade-up">
         <SummaryCard
           title="Total Assignments"
           value={totalAssignments}
@@ -258,9 +258,9 @@ export default function DispatchBoardPage() {
       )}
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-sf-border shadow-sm overflow-hidden animate-fade-up delay-2">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-slate-200">
+          <table className="min-w-full divide-y divide-sf-border">
             <thead>
               <tr className="bg-slate-50">
                 <th className="px-6 py-3 text-left text-xs font-semibold text-slate-500 uppercase tracking-wider">
@@ -331,9 +331,9 @@ export default function DispatchBoardPage() {
                 entries.map((entry, idx) => (
                   <tr
                     key={entry.id}
-                    className={`${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-blue-50/40 transition-colors`}
+                    className={`${idx % 2 === 0 ? 'bg-white' : 'bg-sf-bg-gray/50'} hover:bg-sf-orange-light/40 transition-colors`}
                   >
-                    <td className="px-6 py-3.5 text-sm font-mono font-medium text-slate-900">
+                    <td className="px-6 py-3.5 text-sm font-mono font-medium text-sf-text-900">
                       {entry.loadId.slice(0, 8)}...
                       {entry.hasExceptions && (
                         <span className="ml-2 inline-block w-2 h-2 rounded-full bg-amber-400" title="Has exceptions" />
@@ -343,7 +343,7 @@ export default function DispatchBoardPage() {
                       {entry.ticketNumber}
                     </td>
                     <td className="px-6 py-3.5 text-sm">
-                      <div className="font-medium text-slate-900">
+                      <div className="font-medium text-sf-text-900">
                         {entry.customerName}
                       </div>
                       <div className="text-slate-500 text-xs">
@@ -427,8 +427,8 @@ export default function DispatchBoardPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setCancelTarget(null)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
-            <h3 className="text-lg font-semibold text-slate-900">
+          <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
+            <h3 className="text-lg font-semibold text-sf-text-900">
               Cancel Assignment
             </h3>
             <p className="mt-2 text-sm text-slate-600">
@@ -450,14 +450,14 @@ export default function DispatchBoardPage() {
                 type="text"
                 value={cancelReason}
                 onChange={(e) => setCancelReason(e.target.value)}
-                className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 placeholder="Enter cancellation reason..."
               />
             </div>
             <div className="mt-6 flex items-center justify-end gap-3">
               <button
                 onClick={() => setCancelTarget(null)}
-                className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+                className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
               >
                 Keep Assignment
               </button>

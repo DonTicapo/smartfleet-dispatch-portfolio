@@ -76,7 +76,7 @@ export default function OrderDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-sf-orange" />
       </div>
     );
   }
@@ -95,7 +95,7 @@ export default function OrderDetailPage() {
       <nav className="mb-6">
         <Link
           to="/"
-          className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          className="text-sm text-sf-orange hover:text-sf-orange-hover hover:underline"
         >
           &larr; Back to Orders
         </Link>
@@ -105,10 +105,10 @@ export default function OrderDetailPage() {
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-6">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
           <div>
-            <h1 className="text-xl font-bold text-slate-900">
+            <h1 className="text-xl font-bold text-sf-text-900">
               {order.jobName}
             </h1>
-            <p className="text-sm text-slate-500 mt-0.5">{order.siteName}</p>
+            <p className="text-sm text-sf-text-500 mt-0.5">{order.siteName}</p>
           </div>
           <StatusBadge status={order.status} />
         </div>
@@ -147,15 +147,15 @@ export default function OrderDetailPage() {
 
       {/* Tickets */}
       <div className="mb-4">
-        <h2 className="text-lg font-semibold text-slate-900">Tickets</h2>
-        <p className="text-sm text-slate-500 mt-0.5">
+        <h2 className="text-lg font-semibold text-sf-text-900">Tickets</h2>
+        <p className="text-sm text-sf-text-500 mt-0.5">
           {tickets.length} ticket{tickets.length !== 1 ? 's' : ''} for this
           order
         </p>
       </div>
 
       {tickets.length === 0 ? (
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8 text-center text-sm text-slate-500">
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-8 text-center text-sm text-sf-text-500">
           No tickets created yet
         </div>
       ) : (
@@ -189,10 +189,10 @@ export default function OrderDetailPage() {
                       />
                     </svg>
                     <div>
-                      <span className="text-sm font-semibold text-slate-900">
+                      <span className="text-sm font-semibold text-sf-text-900">
                         Ticket #{ticket.ticketNumber}
                       </span>
-                      <p className="text-xs text-slate-500 mt-0.5">
+                      <p className="text-xs text-sf-text-500 mt-0.5">
                         {formatDate(ticket.scheduledDate)} &middot;{' '}
                         {ticket.quantityRequested} {ticket.quantityUnit}
                       </p>
@@ -205,12 +205,12 @@ export default function OrderDetailPage() {
                 {isExpanded && (
                   <div className="border-t border-slate-100 px-6 py-4 bg-slate-50">
                     {!loads ? (
-                      <div className="flex items-center gap-2 text-sm text-slate-500">
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600" />
+                      <div className="flex items-center gap-2 text-sm text-sf-text-500">
+                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-sf-orange" />
                         Loading...
                       </div>
                     ) : loads.length === 0 ? (
-                      <p className="text-sm text-slate-500">
+                      <p className="text-sm text-sf-text-500">
                         No loads assigned yet
                       </p>
                     ) : (
@@ -222,7 +222,7 @@ export default function OrderDetailPage() {
                           <Link
                             key={load.id}
                             to={`/loads/${load.id}`}
-                            className="flex items-center justify-between bg-white rounded-lg border border-slate-200 px-4 py-3 hover:border-blue-300 transition-colors"
+                            className="flex items-center justify-between bg-white rounded-lg border border-slate-200 px-4 py-3 hover:border-sf-orange-mid transition-colors"
                           >
                             <div className="flex items-center gap-3">
                               <svg
@@ -245,17 +245,17 @@ export default function OrderDetailPage() {
                                 />
                               </svg>
                               <div>
-                                <p className="text-sm font-medium text-slate-900">
+                                <p className="text-sm font-medium text-sf-text-900">
                                   Truck {load.truckId}
                                 </p>
-                                <p className="text-xs text-slate-500">
+                                <p className="text-xs text-sf-text-500">
                                   {load.driverName}
                                 </p>
                               </div>
                             </div>
                             <div className="flex items-center gap-3">
                               {load.etaMinutes != null && (
-                                <span className="text-xs text-slate-500">
+                                <span className="text-xs text-sf-text-500">
                                   ETA: {load.etaMinutes} min
                                 </span>
                               )}

@@ -117,14 +117,14 @@ export default function TrucksPage() {
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Trucks</h1>
-          <p className="text-sm text-slate-500 mt-1">
+          <h1 className="text-2xl font-bold text-sf-text-900 font-serif">Trucks</h1>
+          <p className="text-sm text-sf-text-500 mt-1">
             Manage fleet trucks and their availability
           </p>
         </div>
         <button
           onClick={() => setShowAdd(true)}
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] transition-all"
         >
           <svg
             className="w-4 h-4"
@@ -150,7 +150,7 @@ export default function TrucksPage() {
       )}
 
       {/* Table */}
-      <div className="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-sf-border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-slate-200">
             <thead>
@@ -218,9 +218,9 @@ export default function TrucksPage() {
                   <tr
                     key={truck.id}
                     onClick={() => openDetail(truck)}
-                    className={`cursor-pointer ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-blue-50/40 transition-colors`}
+                    className={`cursor-pointer ${idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-sf-orange-light/40 transition-colors`}
                   >
-                    <td className="px-6 py-3.5 text-sm font-medium text-slate-900">
+                    <td className="px-6 py-3.5 text-sm font-medium text-sf-text-900">
                       {truck.number}
                     </td>
                     <td className="px-6 py-3.5 text-sm text-slate-600">
@@ -255,9 +255,9 @@ export default function TrucksPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setSelected(null)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
+          <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-slate-900">
+              <h2 className="text-lg font-semibold text-sf-text-900">
                 Truck {selected.number}
               </h2>
               <button
@@ -290,7 +290,7 @@ export default function TrucksPage() {
                   onChange={(e) =>
                     setEditStatus(e.target.value as TruckStatus)
                   }
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 >
                   <option value="AVAILABLE">Available</option>
                   <option value="ASSIGNED">Assigned</option>
@@ -306,7 +306,7 @@ export default function TrucksPage() {
                   type="text"
                   value={editPlate}
                   onChange={(e) => setEditPlate(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 />
               </div>
               <div>
@@ -317,20 +317,20 @@ export default function TrucksPage() {
                   value={editNotes}
                   onChange={(e) => setEditNotes(e.target.value)}
                   rows={3}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition resize-none"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition resize-none"
                 />
               </div>
               <div className="flex items-center justify-end gap-3 pt-2">
                 <button
                   onClick={() => setSelected(null)}
-                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
                 >
                   Close
                 </button>
                 <button
                   onClick={handleUpdate}
                   disabled={saving}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] disabled:opacity-50 transition-all"
                 >
                   {saving ? 'Saving...' : 'Save Changes'}
                 </button>
@@ -347,9 +347,9 @@ export default function TrucksPage() {
             className="absolute inset-0 bg-black/40 backdrop-blur-sm"
             onClick={() => setShowAdd(false)}
           />
-          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
+          <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-slate-900">
+              <h2 className="text-lg font-semibold text-sf-text-900">
                 Add Truck
               </h2>
               <button
@@ -388,7 +388,7 @@ export default function TrucksPage() {
                   required
                   value={addNumber}
                   onChange={(e) => setAddNumber(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                   placeholder="e.g. T-101"
                 />
               </div>
@@ -400,7 +400,7 @@ export default function TrucksPage() {
                   type="text"
                   value={addPlate}
                   onChange={(e) => setAddPlate(e.target.value)}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                   placeholder="Optional"
                 />
               </div>
@@ -414,7 +414,7 @@ export default function TrucksPage() {
                     step="0.1"
                     value={addCapacity}
                     onChange={(e) => setAddCapacity(e.target.value)}
-                    className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                    className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                     placeholder="e.g. 10"
                   />
                 </div>
@@ -427,7 +427,7 @@ export default function TrucksPage() {
                     onChange={(e) =>
                       setAddUnit(e.target.value as 'M3' | 'CY')
                     }
-                    className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                    className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                   >
                     <option value="M3">M3 (Cubic Meters)</option>
                     <option value="CY">CY (Cubic Yards)</option>
@@ -442,7 +442,7 @@ export default function TrucksPage() {
                   value={addNotes}
                   onChange={(e) => setAddNotes(e.target.value)}
                   rows={2}
-                  className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition resize-none"
+                  className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition resize-none"
                   placeholder="Optional notes..."
                 />
               </div>
@@ -450,14 +450,14 @@ export default function TrucksPage() {
                 <button
                   type="button"
                   onClick={() => setShowAdd(false)}
-                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={adding}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition"
+                  className="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-sf-orange to-sf-orange-hover rounded-full shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] disabled:opacity-50 transition-all"
                 >
                   {adding ? 'Creating...' : 'Add Truck'}
                 </button>

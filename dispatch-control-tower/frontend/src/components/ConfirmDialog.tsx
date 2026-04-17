@@ -27,13 +27,13 @@ export default function ConfirmDialog({
         onClick={onCancel}
       />
       {/* Dialog */}
-      <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-md mx-4 p-6">
-        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
+      <div className="relative bg-white rounded-xl shadow-xl border border-sf-border w-full max-w-md mx-4 p-6">
+        <h3 className="text-lg font-semibold text-sf-text-900">{title}</h3>
         <p className="mt-2 text-sm text-slate-600">{message}</p>
         <div className="mt-6 flex items-center justify-end gap-3">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+            className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-sf-border rounded-lg hover:bg-slate-50 transition"
           >
             Cancel
           </button>

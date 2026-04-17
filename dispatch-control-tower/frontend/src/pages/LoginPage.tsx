@@ -62,38 +62,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-900 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sf-navy to-[#1a2340] px-4">
       <div className="w-full max-w-md">
         {/* Brand */}
-        <div className="text-center mb-8">
-          <div className="mx-auto w-14 h-14 rounded-xl bg-blue-600 flex items-center justify-center mb-4 shadow-lg shadow-blue-600/30">
-            <svg
-              className="w-8 h-8 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10M13 6h4l3 4v6h-2"
-              />
-            </svg>
-          </div>
-          <h1 className="text-2xl font-bold text-white">SmartFleet</h1>
-          <p className="text-slate-400 mt-1">Dispatch Control Tower</p>
+        <div className="text-center mb-8 animate-fade-up">
+          <h1 className="text-3xl font-bold">
+            <span className="text-white">SMART</span>
+            <span className="text-sf-orange">FLEET</span>
+          </h1>
+          <p className="text-white/60 mt-1">Dispatch Control Tower</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-xl shadow-xl p-8">
-          <h2 className="text-lg font-semibold text-slate-900 mb-6">
+        <div className="bg-white rounded-2xl shadow-xl p-8 animate-fade-up delay-1">
+          <h2 className="text-lg font-semibold text-sf-text-900 mb-6">
             Sign in to dispatch
           </h2>
 
@@ -107,7 +89,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-sm font-medium text-sf-text-700 mb-1.5"
               >
                 Email address
               </label>
@@ -118,7 +100,7 @@ export default function LoginPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 placeholder="dispatcher@smartfleet.com"
               />
             </div>
@@ -126,7 +108,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-sm font-medium text-sf-text-700 mb-1.5"
               >
                 Password
               </label>
@@ -137,7 +119,7 @@ export default function LoginPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 placeholder="Enter your password"
               />
             </div>
@@ -145,18 +127,18 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+              className="w-full rounded-full bg-gradient-to-r from-sf-orange to-sf-orange-hover px-4 py-2.5 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 hover:shadow-[0_6px_28px_rgba(214,81,42,0.4)] focus:outline-none focus:ring-2 focus:ring-sf-orange/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
 
-          <p className="mt-4 text-center text-xs text-slate-400">
+          <p className="mt-4 text-center text-xs text-sf-text-300">
             Demo: use any email/password to sign in
           </p>
         </div>
 
-        <p className="text-center text-xs text-slate-500 mt-6">
+        <p className="text-center text-xs text-white/40 mt-6 animate-fade-up delay-2">
           SmartFleet Dispatch &mdash; Control Tower
         </p>
       </div>

@@ -34,38 +34,20 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-50 px-4">
-      <div className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sf-bg-gray to-slate-100 px-4">
+      <div className="w-full max-w-md animate-fade-up">
         {/* Brand */}
-        <div className="text-center mb-8">
-          <div className="mx-auto w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center mb-4">
-            <svg
-              className="w-7 h-7 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10M13 6h4l3 4v6h-2"
-              />
-            </svg>
-          </div>
-          <h1 className="text-2xl font-bold text-slate-900">SmartFleet</h1>
-          <p className="text-slate-500 mt-1">Customer Visibility Portal</p>
+        <div className="text-center mb-8 animate-fade-up delay-1">
+          <h1 className="text-4xl font-bold leading-tight">
+            <span className="text-sf-navy">SMART</span>
+            <span className="bg-gradient-to-r from-sf-orange to-sf-orange-hover bg-clip-text text-transparent">FLEET</span>
+          </h1>
+          <p className="text-sf-text-500 mt-1 text-sm font-medium tracking-wide uppercase">Customer Portal</p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
-          <h2 className="text-lg font-semibold text-slate-900 mb-6">
+        <div className="bg-white rounded-xl shadow-sm border border-sf-border p-8 animate-fade-up delay-2">
+          <h2 className="text-lg font-semibold text-sf-text-900 mb-6">
             Sign in to your account
           </h2>
 
@@ -79,7 +61,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-sm font-medium text-sf-text-700 mb-1.5"
               >
                 Email address
               </label>
@@ -90,7 +72,7 @@ export default function LoginPage() {
                 autoComplete="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 placeholder="you@company.com"
               />
             </div>
@@ -98,7 +80,7 @@ export default function LoginPage() {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-slate-700 mb-1.5"
+                className="block text-sm font-medium text-sf-text-700 mb-1.5"
               >
                 Password
               </label>
@@ -109,7 +91,7 @@ export default function LoginPage() {
                 autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition"
+                className="block w-full rounded-lg border border-sf-border px-3.5 py-2.5 text-sm text-sf-text-900 placeholder-sf-text-300 focus:border-sf-orange focus:ring-2 focus:ring-sf-orange/20 focus:outline-none transition"
                 placeholder="Enter your password"
               />
             </div>
@@ -117,14 +99,14 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed transition"
+              className="w-full rounded-full bg-gradient-to-br from-sf-orange to-sf-orange-hover px-4 py-2.5 text-sm font-semibold text-white shadow-[0_4px_24px_rgba(214,81,42,0.3)] hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-sf-orange/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
             >
               {loading ? 'Signing in...' : 'Sign in'}
             </button>
           </form>
         </div>
 
-        <p className="text-center text-xs text-slate-400 mt-6">
+        <p className="text-center text-xs text-sf-text-500 mt-6 animate-fade-up delay-3">
           SmartFleet Dispatch &mdash; Customer Visibility Portal
         </p>
       </div>
