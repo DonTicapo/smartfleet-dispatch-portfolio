@@ -20,4 +20,10 @@ export function registerTicketRoutes(
       loads,
     };
   });
+
+  app.get('/portal/tickets/:ticketId/loads', async (request) => {
+    const { ticketId } = TicketIdParam.parse(request.params);
+    const { customerId } = request.principal;
+    return loadTrackerService.listByTicketId(ticketId, customerId);
+  });
 }

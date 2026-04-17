@@ -107,6 +107,21 @@ export class LoadTrackerService {
     });
   }
 
+  async getById(loadId: string, customerId: string): Promise<LoadTracker> {
+    const load = await this.loadTrackerRepo.findById(loadId);
+    if (!load) throw new EntityNotFoundError('LoadTracker', loadId);
+
+    const ticket = await this.ticketViewRepo.findById(load.ticketId);
+    if (!ticket) throw new EntityNotFoundError('LoadTracker', loadId);
+
+    const order = await this.orderViewRepo.findById(ticket.orderId);
+    if (!order || order.customerId !== customerId) {
+      throw new EntityNotFoundError('LoadTracker', loadId);
+    }
+
+    return load;
+  }
+
   async getEta(loadId: string, customerId: string): Promise<LoadEtaResult> {
     const load = await this.loadTrackerRepo.findById(loadId);
     if (!load) throw new EntityNotFoundError('LoadTracker', loadId);

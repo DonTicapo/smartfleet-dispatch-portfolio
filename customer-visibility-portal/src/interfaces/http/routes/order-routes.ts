@@ -26,4 +26,10 @@ export function registerOrderRoutes(
       tickets,
     };
   });
+
+  app.get('/portal/orders/:orderId/tickets', async (request) => {
+    const { orderId } = OrderIdParam.parse(request.params);
+    const { customerId } = request.principal;
+    return ticketViewService.listByOrderId(orderId, customerId);
+  });
 }

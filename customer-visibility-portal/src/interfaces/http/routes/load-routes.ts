@@ -6,6 +6,12 @@ export function registerLoadRoutes(
   app: FastifyInstance,
   loadTrackerService: LoadTrackerService,
 ): void {
+  app.get('/portal/loads/:loadId', async (request) => {
+    const { loadId } = LoadIdParam.parse(request.params);
+    const { customerId } = request.principal;
+    return loadTrackerService.getById(loadId, customerId);
+  });
+
   app.get('/portal/loads/:loadId/eta', async (request) => {
     const { loadId } = LoadIdParam.parse(request.params);
     const { customerId } = request.principal;
