@@ -9,7 +9,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 
-Full-stack ready-mix concrete dispatch platform — 6 bounded-context microservices demonstrating domain-driven design, event-driven architecture, and operational technology integration.
+Full-stack ready-mix concrete dispatch platform — 6 bounded-context microservices with **live SAP Business One integration**, demonstrating domain-driven design, event-driven architecture, and operational technology integration.
 
 > **[View Live Landing Page](https://donticapo.github.io/smartfleet-dispatch-portfolio/)** | **[Browse API Collection](./api-collection/)**
 
@@ -20,7 +20,7 @@ graph TB
     subgraph External
         NAV[Navixy GPS API]
         PLC[PLC / SCADA]
-        ERP[ERP Systems]
+        SAP[SAP B1 Mirror<br/><i>sap_mirror PG :5433</i>]
         CUS[Customer Browser]
     end
 
@@ -29,7 +29,7 @@ graph TB
         NTB[Navixy Telematics Bridge<br/>:3001<br/><i>GPS + Geofence</i>]
         DCT[Dispatch Control Tower<br/>:3002<br/><i>Assignment + Exceptions</i>]
         CVP[Customer Visibility Portal<br/>:3003<br/><i>Status + ETA</i>]
-        AIH[Analytics Integration Hub<br/>:3004<br/><i>KPIs + Events</i>]
+        AIH[Analytics Integration Hub<br/>:3004<br/><i>KPIs + SAP Sync</i>]
         PEOB[Plant Edge OT Bridge<br/>:3005<br/><i>Batch + Mixer</i>]
     end
 
@@ -40,7 +40,7 @@ graph TB
     NAV -->|tracker sync| NTB
     PLC -->|telemetry| PEOB
     CUS -->|portal| CVP
-    ERP <-->|export| AIH
+    SAP -->|customers, orders,<br/>items, warehouses| AIH
 
     NTB -->|geofence events| OTL
     DCT -->|assignments| OTL
@@ -73,8 +73,37 @@ graph TB
 | [navixy-telematics-bridge](./navixy-telematics-bridge) | 3001 | Telematics integration: GPS tracking, geofence inference, store-and-forward |
 | [dispatch-control-tower](./dispatch-control-tower) | 3002 | Dispatch operations: truck/driver assignment, exception handling, board |
 | [customer-visibility-portal](./customer-visibility-portal) | 3003 | Customer portal: order status, ETA tracking, delivery messaging |
-| [analytics-integration-hub](./analytics-integration-hub) | 3004 | Analytics: event ingestion, KPI computation, ERP export, webhooks |
+| [analytics-integration-hub](./analytics-integration-hub) | 3004 | Analytics + SAP B1: event ingestion, KPI computation, SAP mirror sync, webhooks |
 | [plant-edge-ot-bridge](./plant-edge-ot-bridge) | 3005 | Plant edge: batch events, scale readings, mixer state machine, offline sync |
+
+## SAP Business One Integration
+
+The Analytics Integration Hub reads from a **PostgreSQL mirror of SAP B1** (maintained by a .NET sync service) and pushes master data + transactions into SmartFleet via HTTP import endpoints.
+
+| SAP Entity | SmartFleet Target | Records |
+|-----------|-------------------|---------|
+| BusinessPartners | OTL Core customers | 4,862 |
+| BPAddresses (ShipTo) | OTL Core sites | 4,592 |
+| Items (CONCRETOS group) | OTL Core mix designs | 265 |
+| Sales Orders | OTL Core orders | 1,445 |
+| Warehouses | PEOB plants | 8 |
+
+```
+SAP B1 Service Layer
+    |  .NET SapSyncService (every 5 min)
+    v
+sap_mirror (PostgreSQL :5433)
+    |  AIH reads via SQL
+    v
+Analytics Integration Hub (:3004)
+    |  HTTP PUT /import endpoints
+    v
+OTL Core (:3000)  +  PEOB (:3005)
+```
+
+Trigger sync: `POST /integrations/sap/sync` on AIH. See [`docs/sap-mirror-integration.md`](./docs/sap-mirror-integration.md) for field mappings and queries.
+
+Seed data included — run `npx knex seed:run --specific=002_sap_data.ts` per service to load SAP data without a live mirror.
 
 ## Tech Stack
 

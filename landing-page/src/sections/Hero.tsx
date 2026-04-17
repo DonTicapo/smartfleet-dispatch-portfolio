@@ -33,7 +33,7 @@ function Hero() {
 
         {/* Subtitle */}
         <p className="text-xl sm:text-2xl text-slate-300 font-medium mb-4 animate-slide-up" style={{ animationDelay: '0.1s' }}>
-          Full-stack ready-mix concrete dispatch platform built with domain-driven design
+          Full-stack ready-mix concrete dispatch platform with live SAP B1 integration
         </p>
 
         {/* Description */}
@@ -41,8 +41,9 @@ function Hero() {
           className="text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed animate-slide-up"
           style={{ animationDelay: '0.2s' }}
         >
-          6 bounded-context microservices handling the complete lifecycle — from customer orders
-          through plant batching, GPS-tracked delivery, to real-time customer visibility.
+          6 bounded-context microservices handling the complete lifecycle — from SAP master data
+          through plant batching, GPS-tracked delivery, to real-time customer visibility. Syncs
+          4,800+ customers and 1,400+ orders from a production SAP Business One mirror.
         </p>
 
         {/* CTA Buttons */}

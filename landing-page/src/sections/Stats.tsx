@@ -1,9 +1,9 @@
 const stats = [
-  { value: '339+', label: 'TypeScript Files' },
   { value: '6', label: 'Microservices' },
-  { value: '38', label: 'API Endpoints' },
-  { value: '134+', label: 'Passing Tests' },
-  { value: '6', label: 'PostgreSQL Databases' },
+  { value: '4,800+', label: 'SAP Customers Synced' },
+  { value: '291+', label: 'Passing Tests' },
+  { value: '350+', label: 'TypeScript Files' },
+  { value: '44', label: 'Database Tables' },
 ];
 
 function Stats() {
